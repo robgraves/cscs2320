@@ -24,6 +24,18 @@
 
 main()
 {
+    //Variable declarations
+    int input = 0;
+    
+    //Function Prototypes
+    void buildlist();
+    void displaylist();
+    void insert();
+    void append();
+    void obtain();
+    void clearlist();
+    
+    //User menu
     printf("Data Structures Array List Program Menu\n");
     printf("---------------------------------------\n");
     printf("Please choose one of the following:\n");
@@ -34,6 +46,12 @@ main()
     printf("5 - Obtain from List\n");
     printf("7 - Clear List\n");
     printf("8 - Quit\n");
+
+    //User input
+    scanf("%d", &input);
+    
+    //Test
+    printf("You chose number: %d\n", input);
     
     return (0);
 }
