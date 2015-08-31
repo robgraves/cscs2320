@@ -25,9 +25,10 @@
 main()
 {
     //Variable declarations
-    int input = 0;
+
     
     //Function Prototypes
+    void menu();                //Do I want the menu to be a function?        
     void buildlist();
     void displaylist();
     void insert();
@@ -35,7 +36,20 @@ main()
     void obtain();
     void clearlist();
     
-    //User menu
+    menu();                     //calling menu fucntion
+
+    //case switching for user input
+    
+    return (0);
+}
+
+//User menu function
+void menu()
+{
+    //variable declarations
+    int input = 0;
+
+    //output menu
     printf("Data Structures Array List Program Menu\n");
     printf("---------------------------------------\n");
     printf("Please choose one of the following:\n");
@@ -49,9 +63,7 @@ main()
 
     //User input
     scanf("%d", &input);
-    
+
     //Test
     printf("You chose number: %d\n", input);
-    
-    return (0);
 }
