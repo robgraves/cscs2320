@@ -64,6 +64,7 @@ void menu()
     //User input
     scanf("%d", &input);
 
+    //case switching statement
     switch(input)
     {
         case 1:
