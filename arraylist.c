@@ -91,7 +91,7 @@ void menu()
 
             break;
         default:
-            printf("ERROR: Invalide entry!\n");
+            printf("ERROR: Invalid entry!\n");
     }
 
     //Test
