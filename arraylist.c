@@ -25,7 +25,7 @@
 main()
 {
     //Variable declarations
-
+    int input = 0;
     
     //Function Prototypes
     void menu();                //Do I want the menu to be a function?        
@@ -37,8 +37,38 @@ main()
     void clearlist();
     
     menu();                     //calling menu fucntion
+    scanf("%d", &input);
 
-    //case switching for user input
+    //case switching statement
+    switch(input)
+    {
+        case 1:         //Build List
+            buildlist();
+            break;
+        case 2:         //Display List
+            displaylist();
+            break;
+        case 3:         //Insert into List 
+            insert();
+            break;
+        case 4:         //Append into List
+            append();
+            break;     
+        case 5:         //Obtain from List
+            obtain();
+            break;
+        case 6:         //Clear List         
+            clearlist();
+            break;
+        case 7:         //Quit
+            printf("Not sure what I'm gonna do yet for the quit...\n");
+            break;
+        default:
+            printf("ERROR: Invalid entry!\n");
+    }
+
+    //Test
+    printf("You chose number: %d\n", input);
     
     return (0);
 }
@@ -47,7 +77,7 @@ main()
 void menu()
 {
     //variable declarations
-    int input = 0;
+    //int input = 0;
 
     //output menu
     printf("Data Structures Array List Program Menu\n");
@@ -58,38 +88,36 @@ void menu()
     printf("3 - Insert into List\n");
     printf("4 - Append into List\n");
     printf("5 - Obtain from List\n");
-    printf("7 - Clear List\n");
-    printf("8 - Quit\n");
+    printf("6 - Clear List\n");
+    printf("7 - Quit\n");
 
     //User input
-    scanf("%d", &input);
+    //scanf("%d", &input);
 
     //case switching statement
+    /*
     switch(input)
     {
-        case 1:
-
+        case 1:         //Build List
+            buildlist();
             break;
-        case 2:
-
+        case 2:         //Display List
+            displaylist();
             break;
-        case 3:
-
+        case 3:         //Insert into List 
+            insert();
             break;
-        case 4:
-
+        case 4:         //Append into List
+            append();
+            break;     
+        case 5:         //Obtain from List
+            obtain();
             break;
-        case 5:
-
+        case 6:         //Clear List         
+            clearlist();
             break;
-        case 6:
-
-            break;
-        case 7:
-
-            break;
-        case 8:
-
+        case 7:         //Quit
+            printf("Not sure what I'm gonna do yet for the quit...");
             break;
         default:
             printf("ERROR: Invalid entry!\n");
@@ -97,4 +125,30 @@ void menu()
 
     //Test
     printf("You chose number: %d\n", input);
+
+    */
+}
+void buildlist()
+{
+    printf("Build List Function\n");
+}
+void displaylist()
+{
+    printf("Display List Function\n");
+}
+void insert()
+{
+    printf("Insert into List Function\n");
+}
+void append()
+{
+    printf("Append into List Function\n");
+}
+void obtain()
+{
+    printf("Obtain from List Function\n");
+}
+void clearlist()
+{
+    printf("Clear List Function\n");
 }
