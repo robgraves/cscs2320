@@ -33,56 +33,8 @@
 
 main()
 {
-    //Variable declarations
-    //int input = 0;
-    
-    //Function Prototypes
-    /*
-    void menu();                //Do I want the menu to be a function?        
-    void buildlist();
-    void displaylist();
-    void insert();
-    void append();
-    void obtain();
-    void clearlist();
-    */
 
     menu();                     //calling menu fucntion
-    /*
-    //User input
-    scanf("%d", &input);
-
-    //case switching statement
-    switch(input)
-    {
-        case 1:         //Build List
-            buildlist();
-            break;
-        case 2:         //Display List
-            displaylist();
-            break;
-        case 3:         //Insert into List 
-            insert();
-            break;
-        case 4:         //Append into List
-            append();
-            break;     
-        case 5:         //Obtain from List
-            obtain();
-            break;
-        case 6:         //Clear List         
-            clearlist();
-            break;
-        case 7:         //Quit
-            printf("Not sure what I'm gonna do yet for the quit...\n");
-            break;
-        default:
-            printf("ERROR: Invalid entry!\n");
-    }
-
-    //Test
-    printf("You chose number: %d\n", input);
-    */
 
     return (0);
 }
@@ -142,8 +94,6 @@ void menu()
         }
 
     }
-    //Test
-    //printf("You chose number: %d\n", input);
 
 }
 void buildlist()
