@@ -35,6 +35,7 @@ main()
 {
     //variable declarations
     int input = 0;
+    int buildinput = 0;
     int quitflag = 0;
 
     //main program loop
@@ -51,21 +52,33 @@ main()
         switch(input)
         {
             case 1:         //Build List
-                buildlist();
+                printf("Build List Function:\n");
+                printf("Enter values for the list.  Enter a '-1' to signify the end of data.\n");
+                while (buildinput != -1)
+                {
+                    printf("Enter value: \n");    
+                    scanf("%d", &buildinput);
+                    buildlist();
+                }
                 break;
             case 2:         //Display List
+                printf("Display List Function\n");
                 displaylist();
                 break;
             case 3:         //Insert into List 
+                printf("Insert into List Function\n");
                 insert();
                 break;
             case 4:         //Append into List
+                printf("Append into List Function\n");
                 append();
                 break;     
             case 5:         //Obtain from List
+                printf("Obtain from List Function\n");
                 obtain();
                 break;
             case 6:         //Clear List         
+                printf("Clear List Function\n");
                 clearlist();
                 break;
             case 7:         //Quit
@@ -85,6 +98,7 @@ main()
 void menu()
 {
     //output menu
+    printf("---------------------------------------\n");
     printf("Data Structures Array List Program Menu\n");
     printf("---------------------------------------\n");
     printf("Please choose one of the following:\n");
@@ -100,25 +114,25 @@ void menu()
 }
 void buildlist()
 {
-    printf("Build List Function\n");
+    
 }
 void displaylist()
 {
-    printf("Display List Function\n");
+
 }
 void insert()
 {
-    printf("Insert into List Function\n");
+
 }
 void append()
 {
-    printf("Append into List Function\n");
+
 }
 void obtain()
 {
-    printf("Obtain from List Function\n");
+
 }
 void clearlist()
 {
-    printf("Clear List Function\n");
+
 }
