@@ -37,10 +37,12 @@ main()
     int input = 0;
     int quitflag = 0;
 
-    while (quitflag != 1)           //main program loop
+    //main program loop
+    while (quitflag != 1)          
     {
-
-        menu();                     //calling menu fucntion
+        
+        //calling menu function
+        menu();               
 
         //User input
         scanf("%d", &input);
@@ -82,12 +84,6 @@ main()
 //User menu function
 void menu()
 {
-    //variable declarations
-    //int input = 0;
-    //int quitflag = 0;
-
-    //while (quitflag != 1)
-    //{
     //output menu
     printf("Data Structures Array List Program Menu\n");
     printf("---------------------------------------\n");
@@ -100,42 +96,6 @@ void menu()
     printf("6 - Clear List\n");
     printf("7 - Quit\n");
     printf("---------------------------------------\n");
-
-        /*
-        //User input
-        scanf("%d", &input);
-
-        //case switching statement
-        switch(input)
-        {
-            case 1:         //Build List
-                buildlist();
-                break;
-            case 2:         //Display List
-                displaylist();
-                break;
-            case 3:         //Insert into List 
-                insert();
-                break;
-            case 4:         //Append into List
-                append();
-                break;     
-            case 5:         //Obtain from List
-                obtain();
-                break;
-            case 6:         //Clear List         
-                clearlist();
-                break;
-            case 7:         //Quit
-                printf("Leaving...Have a Nice Day!! :)\n");
-                quitflag = 1;
-                break;
-            default:
-                printf("ERROR: Invalid entry!\n");
-        }
-        */
-
-    //}
 
 }
 void buildlist()
