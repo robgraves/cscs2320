@@ -24,12 +24,12 @@
 
     //Function Prototypes
     void menu();                        
-    int buildlist(int, int *, int);     //index, array, and build_input passed
-    void displaylist();
+    int buildlist(int, int *, int);     //passing index, array, and build funnction's input(buildinput)
+    void displaylist(int *);       //passing array
     void insert();
     void append();
     void obtain();
-    void clearlist();
+    int * clearlist(int *);
 
 main()
 {
@@ -39,7 +39,7 @@ main()
     int quitflag = 0;
     int index = 0;
     int array[21];
-    array[index] = -1;
+    array[index] = -1;      //this is probably pointless
 
     //main program loop
     while (quitflag != 1)          
@@ -66,7 +66,7 @@ main()
                 break;
             case 2:         //Display List
                 printf("Display List Function\n");
-                displaylist();
+                displaylist(array);
                 break;
             case 3:         //Insert into List 
                 printf("Insert into List Function\n");
@@ -82,7 +82,7 @@ main()
                 break;
             case 6:         //Clear List         
                 printf("Clear List Function\n");
-                clearlist();
+                clearlist(array);
                 break;
             case 7:         //Quit
                 printf("Leaving...Have a Nice Day!! :)\n");
@@ -117,15 +117,20 @@ void menu()
 }
 int buildlist(int index, int *array,int buildinput)
 {
-    //index++;
     array[index]=buildinput;
     printf("Array index %d is %d\n", index, array[index]);
     index++;
     return index;
 }
-void displaylist()
+void displaylist(int *array)
 {
-
+    int i = 0;
+    printf("The list is: \n");
+    while (array[i] != -1)
+    { 
+        printf("Element #%d: %d\n", i, array[i]);
+        i++;
+    }
 }
 void insert()
 {
@@ -139,7 +144,12 @@ void obtain()
 {
 
 }
-void clearlist()
+int * clearlist(int *array)
 {
-
+    int i;
+    for (i=0;i<=20;i++)
+    {
+        array[i]=0;
+    }
+    return array;
 }
