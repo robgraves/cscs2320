@@ -149,7 +149,7 @@ int * clearlist(int *array)
     int i;
     for (i=0;i<=20;i++)
     {
-        array[i]=0;
+        array[i]=-1;
     }
     return array;
 }
