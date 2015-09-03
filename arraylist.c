@@ -24,7 +24,7 @@
 
     //Function Prototypes
     void menu();                        
-    void buildlist(int, int *);     //index and array passed
+    int buildlist(int, int *, int);     //index, array, and build_input passed
     void displaylist();
     void insert();
     void append();
@@ -61,7 +61,7 @@ main()
                 {
                     printf("Enter value: \n");    
                     scanf("%d", &buildinput);
-                    buildlist(index,array);
+                    index=buildlist(index,array,buildinput);
                 }
                 break;
             case 2:         //Display List
@@ -115,9 +115,13 @@ void menu()
     printf("---------------------------------------\n");
 
 }
-void buildlist(int index, int *array)
+int buildlist(int index, int *array,int buildinput)
 {
+    //index++;
+    array[index]=buildinput;
     printf("Array index %d is %d\n", index, array[index]);
+    index++;
+    return index;
 }
 void displaylist()
 {
