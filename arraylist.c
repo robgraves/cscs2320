@@ -24,8 +24,8 @@
 
     //Function Prototypes
     void menu();                        
-    int buildlist(int, int *, int);     //passing index, array, and build funnction's input(buildinput)
-    void displaylist(int *);       //passing array
+    int buildlist(int, int *, int);     //passing index, array pointer, and buildinput
+    void displaylist(int *);            //passing array pointer
     void insert();
     void append();
     void obtain();
@@ -39,7 +39,6 @@ main()
     int quitflag = 0;
     int index = 0;
     int array[21];
-    array[index] = -1;      //this is probably pointless
 
     //main program loop
     while (quitflag != 1)          
@@ -56,13 +55,21 @@ main()
         {
             case 1:         //Build List
                 printf("Build List Function:\n");
-                printf("Enter values for the list.  Enter a '-1' to signify the end of data.\n");
-                while (buildinput != -1)
+                printf("Enter values into the list up to 20 values total.\n");  
+                printf("Enter a '-1' to signify the end of data.\n");
+
+                while ((buildinput != -1) && (index<20))
                 {
                     printf("Enter value: \n");    
                     scanf("%d", &buildinput);
                     index=buildlist(index,array,buildinput);
                 }
+
+                if (index == 20)            //Testing for full array
+                {
+                    printf("Maximum values reached.  Array is full.\n");    //Full array message
+                }
+
                 break;
             case 2:         //Display List
                 printf("Display List Function\n");
@@ -82,14 +89,14 @@ main()
                 break;
             case 6:         //Clear List         
                 printf("Clear List Function\n");
-                clearlist(array);
+                clearlist(array);                           //calling clearlist passing it the array
                 break;
             case 7:         //Quit
                 printf("Leaving...Have a Nice Day!! :)\n");
-                quitflag = 1;
+                quitflag = 1;                               //changing quit flag upon quit selection
                 break;
             default:
-                printf("ERROR: Invalid entry!\n");
+                printf("ERROR: Invalid entry!\n");          //Error message for invalid entry
         }
     }
 
@@ -97,7 +104,7 @@ main()
     return (0);
 }
 
-//User menu function
+//User Menu Function
 void menu()
 {
     //output menu
@@ -115,35 +122,48 @@ void menu()
     printf("---------------------------------------\n");
 
 }
-int buildlist(int index, int *array,int buildinput)
+
+//Build List Function
+int buildlist(int index, int *array, int buildinput)
 {
     array[index]=buildinput;
     printf("Array index %d is %d\n", index, array[index]);
     index++;
     return index;
 }
+
+//Display List Function
 void displaylist(int *array)
 {
     int i = 0;
     printf("The list is: \n");
-    while (array[i] != -1)
+    while ((array[i] != -1) && (i<20))
     { 
         printf("Element #%d: %d\n", i, array[i]);
         i++;
     }
 }
-void insert()
-{
 
+//Insert into List Function
+void insert()                   //WORK IN  PROGRESS
+{
+    int ins_index = 0;
+    printf("Enter index of array element to append after: \n");
 }
+
+//Append into List Function
 void append()
 {
 
 }
+
+//Obtain from List Function
 void obtain()
 {
 
 }
+
+//Clear List Function
 int * clearlist(int *array)
 {
     int i;
