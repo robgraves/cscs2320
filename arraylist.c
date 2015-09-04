@@ -26,10 +26,10 @@
     void menu();                        
     int buildlist(int, int *, int);     //passing index, array pointer, and buildinput
     void displaylist(int *);            //passing array pointer
-    void insert();
-    void append();
+    int * insert(int, int, int *);           //passing requested index, new value, and array
+    int * append(int, int, int *);           //passing requested index, new value, and array
     void obtain();
-    int * clearlist(int *);
+    int * clearlist(int *);             //clears out the array, pass array
 
 main()
 {
@@ -39,6 +39,10 @@ main()
     int quitflag = 0;
     int index = 0;
     int array[21];
+    int ins_index = 0;
+    int app_index = 0;
+    int ins_value = 0;
+    int app_value = 0;
 
     //main program loop
     while (quitflag != 1)          
@@ -77,11 +81,17 @@ main()
                 break;
             case 3:         //Insert into List 
                 printf("Insert into List Function\n");
-                insert();
+                printf("Enter index of array element to insert before: \n");
+                scanf("%d", &ins_index);
+                printf("Enter new value to insert before this index: \n");
+                scanf("%d", &ins_value);
+                insert(ins_index, ins_value, array);
                 break;
             case 4:         //Append into List
                 printf("Append into List Function\n");
-                append();
+                printf("Enter index of array element to append after: \n");
+                scanf("%d", &app_index);
+                append(app_index, app_value, array);
                 break;     
             case 5:         //Obtain from List
                 printf("Obtain from List Function\n");
@@ -97,6 +107,7 @@ main()
                 break;
             default:
                 printf("ERROR: Invalid entry!\n");          //Error message for invalid entry
+                break;                                      //TESTING THIS LINE
         }
     }
 
@@ -145,16 +156,20 @@ void displaylist(int *array)
 }
 
 //Insert into List Function
-void insert()                   //WORK IN  PROGRESS
+int * insert(int ins_index, int ins_value, int * array)                 //WORK IN  PROGRESS
 {
-    int ins_index = 0;
-    printf("Enter index of array element to append after: \n");
+    int i = ins_index;
+    for (i=ins_index;i<20;i++)
+    {
+        array[i+1]=array[i];
+    }
+    return array;
 }
 
 //Append into List Function
-void append()
+int * append(int app_index, int app_value, int * array)                 //WORK IN PROGRESS
 {
-
+    int i = app_index;
 }
 
 //Obtain from List Function
