@@ -107,7 +107,7 @@ main()
                 break;
             default:
                 printf("ERROR: Invalid entry!\n");          //Error message for invalid entry
-                break;                                      //TESTING THIS LINE
+                break;                                    
         }
     }
 
@@ -174,7 +174,7 @@ int * append(int app_index, int app_value, int * array)                 //WORK I
 }
 
 //Obtain from List Function
-void obtain()
+void obtain()                                                       //TO BE IMPLEMENTED
 {
 
 }
