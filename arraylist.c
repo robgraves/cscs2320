@@ -159,10 +159,11 @@ void displaylist(int *array)
 int * insert(int ins_index, int ins_value, int * array)                 //WORK IN  PROGRESS
 {
     int i = ins_index;
-    for (i=ins_index;i<20;i++)
+    for (i=ins_index;array[i]!=-1;i++)
     {
         array[i+1]=array[i];
     }
+    array[ins_index]=ins_value;
     return array;
 }
 
