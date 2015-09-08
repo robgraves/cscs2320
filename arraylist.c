@@ -44,10 +44,12 @@ main()
     int ins_value = 0;
     int app_value = 0;
 
+    //TESTING prestting all array vales to -1 before doing anything
+    clearlist(array);           //calling clearlist passing it the array
+
     //main program loop
     while (quitflag != 1)          
     {
-        
         //calling menu function
         menu();               
 
@@ -155,11 +157,26 @@ void displaylist(int *array)
     }
 }
 
+/*
 //Insert into List Function
 int * insert(int ins_index, int ins_value, int * array)                 //WORK IN  PROGRESS
 {
     int i = ins_index;
     for (i=ins_index;array[i]!=-1;i++)
+    {
+        array[i+1]=array[i];
+    }
+    array[ins_index]=ins_value;
+    return array;
+}
+*/
+
+//Insert into List Function
+int * insert(int ins_index, int ins_value, int * array)                 //WORK IN  PROGRESS
+{
+    int i = ins_index;
+    //for (i=20;array[i]==-1;i--)
+    for (i=19;i>=ins_index;i--)
     {
         array[i+1]=array[i];
     }
