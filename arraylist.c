@@ -174,7 +174,6 @@ int * insert(int ins_index, int ins_value, int * array)
 //Append into List Function
 int * append(int app_index, int app_value, int * array)           
 {
-    //int i = app_index+1;
     int i = app_index;
     for (i=19;i>=app_index;i--)
     {
