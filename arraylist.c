@@ -92,6 +92,8 @@ main()
                 printf("Append into List Function\n");
                 printf("Enter index of array element to append after: \n");
                 scanf("%d", &app_index);
+                printf("Enter new value to append after this index: \n");
+                scanf("%d", &app_value);
                 append(app_index, app_value, array);
                 break;     
             case 5:         //Obtain from List
@@ -170,9 +172,16 @@ int * insert(int ins_index, int ins_value, int * array)
 }
 
 //Append into List Function
-int * append(int app_index, int app_value, int * array)                 //WORK IN PROGRESS
+int * append(int app_index, int app_value, int * array)           
 {
+    //int i = app_index+1;
     int i = app_index;
+    for (i=19;i>=app_index;i--)
+    {
+        array[i+1]=array[i];
+    }
+    array[app_index+1]=app_value;
+    return array;
 }
 
 //Obtain from List Function
