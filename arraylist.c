@@ -26,25 +26,27 @@
     void menu();                        
     int buildlist(int, int *, int);     //passing index, array pointer, and buildinput
     void displaylist(int *);            //passing array pointer
-    int * insert(int, int, int *);           //passing requested index, new value, and array
-    int * append(int, int, int *);           //passing requested index, new value, and array
-    void obtain();
+    int * insert(int, int, int *);      //passing requested index, new value, and array
+    int * append(int, int, int *);      //passing requested index, new value, and array
+    int * obtain(int, int *, int *);    //passing index, array, and address of obt_value
     int * clearlist(int *);             //clears out the array, pass array
 
 main()
 {
     //variable declarations
-    int input = 0;
-    int buildinput = 0;
-    int quitflag = 0;
-    int index = 0;
-    int array[21];
-    int ins_index = 0;
-    int app_index = 0;
-    int ins_value = 0;
-    int app_value = 0;
+    int input = 0;                      //user's choice on menu
+    int buildinput = 0;                 //values entered to build list
+    int quitflag = 0;                   //quit variable for main program loop
+    int index = 0;                      //index associated with build list entries
+    int array[21];                      //the array set to a size of 21
+    int ins_index = 0;                  //index of desired insertion point for insert() function
+    int app_index = 0;                  //index of desired appending point for append() function
+    int ins_value = 0;                  //value entered at insertion point for insert() function
+    int app_value = 0;                  //value entered at appending point for append() function
+    int obt_index = 0;                  //index of desired value to obtain in obtain() function
+    int obt_value = 0;                  //obtained and removed value from obtain() function
 
-    clearlist(array);           //calling clearlist passing it the array
+    clearlist(array);           //calling clearlist passing it the array, to enter all -1's in array
 
     //main program loop
     while (quitflag != 1)          
@@ -98,7 +100,11 @@ main()
                 break;     
             case 5:         //Obtain from List
                 printf("Obtain from List Function\n");
-                obtain();
+                printf("Enter index of array element to obtain: \n");
+                printf("(This will remove this value from the list)\n");
+                scanf("%d", &obt_index);
+                obtain(obt_index, array, &obt_value);
+                printf("Romoving Element #%d : %d from the list. \n", obt_index, obt_value );
                 break;
             case 6:         //Clear List         
                 printf("Clear List Function\n");
@@ -184,9 +190,16 @@ int * append(int app_index, int app_value, int * array)
 }
 
 //Obtain from List Function
-void obtain()                                                       //TO BE IMPLEMENTED
+int * obtain(int obt_index, int * array, int * obt_value)                        //WORK IN PROGRESS
 {
-
+    int i = obt_index;
+    //int *obt_value = & obt_value;
+    for (i=0;i<=21;i++)
+    {
+        array[i+1]=array[i];
+    }
+    //array[obt_index]=(sizeof(int))obt_value;
+    return array;
 }
 
 //Clear List Function
