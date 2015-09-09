@@ -104,7 +104,7 @@ main()
                 printf("(This will remove this value from the list)\n");
                 scanf("%d", &obt_index);
                 obtain(obt_index, array, &obt_value);
-                printf("Romoving Element #%d : %d from the list. \n", obt_index, obt_value );
+                printf("Removing Element #%d : %d from the list. \n", obt_index, obt_value );
                 break;
             case 6:         //Clear List         
                 printf("Clear List Function\n");
@@ -191,12 +191,13 @@ int * append(int app_index, int app_value, int * array)
 
 //Obtain from List Function
 int * obtain(int obt_index, int * array, int * obt_value)                        //WORK IN PROGRESS
-{
+{                                                                      
     int i = obt_index;
     //int *obt_value = & obt_value;
-    for (i=0;i<=21;i++)
+    //array[obt_index]=obt_value;
+    for (i=obt_index;i<=19;i++)
     {
-        array[i+1]=array[i];
+        array[i]=array[i+1];
     }
     //array[obt_index]=(sizeof(int))obt_value;
     return array;
