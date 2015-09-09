@@ -28,7 +28,7 @@
     void displaylist(int *);            //passing array pointer
     int * insert(int, int, int *);      //passing requested index, new value, and array
     int * append(int, int, int *);      //passing requested index, new value, and array
-    int * obtain(int, int *, int *);    //passing index, array, and address of obt_value
+    int * obtain(int, int *, int*);     //passing index, array, and address of obt_value
     int * clearlist(int *);             //clears out the array, pass array
 
 main()
@@ -190,11 +190,11 @@ int * append(int app_index, int app_value, int * array)
 }
 
 //Obtain from List Function
-int * obtain(int obt_index, int * array, int * obt_value)                        //WORK IN PROGRESS
+int * obtain(int obt_index, int * array, int* obt_value)                        //WORK IN PROGRESS
 {                                                                      
     int i = obt_index;
     //int *obt_value = & obt_value;
-    //array[obt_index]=obt_value;
+    array[obt_index]=*obt_value;
     for (i=obt_index;i<=19;i++)
     {
         array[i]=array[i+1];
