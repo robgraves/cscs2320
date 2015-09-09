@@ -194,7 +194,8 @@ int * obtain(int obt_index, int * array, int* obt_value)                        
 {                                                                      
     int i = obt_index;
     //int *obt_value = & obt_value;
-    array[obt_index]=*obt_value;
+    (*obt_value)=array[obt_index];
+    //array[obt_index]=*obt_value;
     for (i=obt_index;i<=19;i++)
     {
         array[i]=array[i+1];
