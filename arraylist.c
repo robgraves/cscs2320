@@ -53,6 +53,7 @@ main()
     {
         //calling menu function
         menu();               
+        index = 0;
 
         //User input
         scanf("%d", &input);
