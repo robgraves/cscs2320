@@ -1,0 +1,31 @@
+//
+// Matthew Page
+//
+// CSCS2320 - Data Structures
+//
+// 09/15/2015
+//
+//Pseudo code for sln0
+//
+
+//Generating the initial list (Given)
+start = tmp = mknode(2);
+tmp -> after = mknode(9);
+tmp = tmp -> after;
+start -> after -> after = mknode(8);
+tmp = tmp -> after;
+tmp -> after = mknode(16);
+
+//Insert a 6 before the 8
+tmp2 = mknode(6);
+tmp2 -> after = tmp;
+start -> after -> after = tmp2;
+
+//Insert a 0 before the 2
+tmp2 = mknode(0);
+tmp2 -> after = start;
+while (tmp2 -> after -> value != 2)4
+{
+    tmp2 -> after = tmp2 -> after -> after;
+}
+start = tmp2;
