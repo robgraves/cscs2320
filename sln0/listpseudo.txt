@@ -17,83 +17,83 @@ tmp = tmp -> after;
 tmp -> after = mknode(16);
 
 //Insert a 6 before the 8
-tmp2 = mknode(6);
-tmp2 -> after = tmp;
-start -> after -> after = tmp2;
+tmp2 = mknode(6);               //makes a new node with the value 6 in it, tmp2 pointing at it
+tmp2 -> after = tmp;            //links the new node (6)'s after with the next node where tmp is pointing at the (8)
+start -> after -> after = tmp2; //links the previous node (4)'s after to the new (6) node
 
 //Insert a 0 before the 2
-tmp2 = mknode(0);
-tmp2 -> after = start;
-while (tmp2 -> after -> value != 2)4
+tmp2 = mknode(0);               //makes a new node with 0 in it, with tmp2 pointing at it
+tmp2 -> after = start;          //sets the new node (0)'s after to point at the starting node
+while (tmp2 -> after -> value != 2)            //loops until tmp2's after is pointing to a node containing 2
 {
-    tmp2 -> after = tmp2 -> after -> after;
+   tmp2 -> after = tmp2 -> after -> after;     //if not then it keeps moving the tmp2's after down the list
 }
-start = tmp2;
+start = tmp2;                             //connecsts start to the new node (0) at the new beginning of the list
 
 //Displaying the list
-current = start;
-while (current != NULL)
+current = start;                        //pre setting current to be start.
+while (current != NULL)                 //loop for as long as current isn't pointing to NULL (the end of the list)
 {
-    printf(current -> value);
-    current = current -> after;
+    printf(current -> value);           //print current's value
+    current = current -> after;         //move current to the next node
 }
 
 //Appending a 1 after the 0 in the list
-current = start;
-tmp2 = mknode(1);
-while (current != 0)
+current = start;                        //pre setting current to be start
+tmp2 = mknode(1);                       //making a new node with a 1, with tmp2 pointing at it.
+while (current != 0)                    //loop for while current does not equal 0 
 {
-    current = current -> after;
+    current = current -> after;         //to move current down the list.
 }
-tmp2 -> after = current -> after;
-current -> after = tmp2;
+tmp2 -> after = current -> after;       //after finding the (0) node, setting the new node (1)'s after to the same as (0)'s after
+current -> after = tmp2;                //then linking up the current's (0) after to the new node (1) 
 
 //Grabbing from the list the 6 and disconnecting and deallocating the node
-tmp = start;
-tmp2 = start;
-while (tmp -> after -> after -> value != 6)
+tmp = start;                            //setting tmp to start
+tmp2 = start;                           //setting tmp2 to start
+while (tmp -> after -> after -> value != 6)         /looping for tmp's after after value is not 6 (2 ahead)
 {
-    tmp -> after = tmp -> after -> after;
+    tmp -> after = tmp -> after -> after;       //then moving tmp's after after down the list.
 }
-while (tmp2 -> value != 6)
+while (tmp2 -> value != 6)                      //looping for tmp2's value is not 6
 {
-    tmp2 = tmp2 -> after
+    tmp2 = tmp2 -> after                        //then moving tmp2 down the list
 }
-tmp -> after = tmp -> after -> after;
-tmp2 = rmnode(tmp2);
+tmp -> after = tmp -> after -> after;           //moving tmp's after to point to the node after the one being removed
+tmp2 = rmnode(tmp2);                            //removing the node at tmp2
 
 //Appending a 12 to the list after the 8
-tmp2 = mknode(12);
-current = start;
-while (current != 8)
+tmp2 = mknode(12);                              //making a new node with 12 in it, and tmp2 pointing to it
+current = start;                                //setting current to start
+while (current != 8)                            //looping while current is not 8
 {
-    current = current -> after;
+    current = current -> after;                 //moving current down the list
 }
-tmp2 -> after = current -> after;
-current -> after = tmp2;
+tmp2 -> after = current -> after;               //setting the new node (12)'s after to the current's (8) after (16)
+current -> after = tmp2;                        //moving (8)'s after to point to the new node (12)
 
 //Copying the list into a second identical list referenced by start2
-start2 = NULL;
-current = start;
-list2current = start2;
-while (current != NULL)
+start2 = NULL;                  //pre setting start2 to NULL (for copied list)
+current = start;                //setting current to start on original list
+list2current = start2;          //running a current down the new list
+while (current != NULL)         //looping for as long as current is not NULL (until the end of the original list)
 {
-    current = current -> after;
-    list2current -> after = mknode(current -> value);
-    list2current = list2current -> after;
+    current = current -> after;     //moving current down the list one node at a time
+    list2current -> after = mknode(current -> value);       //creating a new node with current's value at list2current's after
+    list2current = list2current -> after;                   //moving list2current down the 2nd list, or new, or copied list
 }
 
 //Grab 0 from second list, disconnect it, and deallocate the node
-tmp = start2;
-tmp2 = start2;
-while (tmp2 -> value != 0)
+tmp = start2;                                   //setting tmp to start2
+tmp2 = start2;                                  //setting tmp2 to start2  
+while (tmp2 -> value != 0)                      //looping for as long as tmp2's value is not 0
 {
-    tmp2 = tmp2 -> after;
+    tmp2 = tmp2 -> after;                       //then tmp2 gets moved down the list
 }
-while (tmp -> after -> after -> value != 0 || tmp == 0)
+while (tmp -> after -> after -> value != 0 || tmp == 0)  //looping for tmp's after after's value is not 0 OR tmp equals 0 
 {
-    tmp -> after = tmp -> after -> after;
+    tmp -> after = tmp -> after -> after;       //moving tmp's after down the list
 }
-tmp2 = tmp -> after;
-tmp2 =  rmnode(tmp2);
-start2 = tmp2;
+tmp2 = tmp -> after;                            //pointing tmp2 to the node after tmp, skipping the 0 node to be removed
+tmp2 =  rmnode(tmp2);                           //removing the 0 node at tmp2 and deallocating it
+start2 = tmp2;                                  //setting start2 to the new starting node
