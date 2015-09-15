@@ -29,3 +29,71 @@ while (tmp2 -> after -> value != 2)4
     tmp2 -> after = tmp2 -> after -> after;
 }
 start = tmp2;
+
+//Displaying the list
+current = start;
+while (current != NULL)
+{
+    printf(current -> value);
+    current = current -> after;
+}
+
+//Appending a 1 after the 0 in the list
+current = start;
+tmp2 = mknode(1);
+while (current != 0)
+{
+    current = current -> after;
+}
+tmp2 -> after = current -> after;
+current -> after = tmp2;
+
+//Grabbing from the list the 6 and disconnecting and deallocating the node
+tmp = start;
+tmp2 = start;
+while (tmp -> after -> after -> value != 6)
+{
+    tmp -> after = tmp -> after -> after;
+}
+while (tmp2 -> value != 6)
+{
+    tmp2 = tmp2 -> after
+}
+tmp -> after = tmp -> after -> after;
+tmp2 = rmnode(tmp2);
+
+//Appending a 12 to the list after the 8
+tmp2 = mknode(12);
+current = start;
+while (current != 8)
+{
+    current = current -> after;
+}
+tmp2 -> after = current -> after;
+current -> after = tmp2;
+
+//Copying the list into a second identical list referenced by start2
+start2 = NULL;
+current = start;
+list2current = start2;
+while (current != NULL)
+{
+    current = current -> after;
+    list2current -> after = mknode(current -> value);
+    list2current = list2current -> after;
+}
+
+//Grab 0 from second list, disconnect it, and deallocate the node
+tmp = start2;
+tmp2 = start2;
+while (tmp2 -> value != 0)
+{
+    tmp2 = tmp2 -> after;
+}
+while (tmp -> after -> after -> value != 0 || tmp == 0)
+{
+    tmp -> after = tmp -> after -> after;
+}
+tmp2 = tmp -> after;
+tmp2 =  rmnode(tmp2);
+start2 = tmp2;
