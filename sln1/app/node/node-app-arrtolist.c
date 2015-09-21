@@ -27,22 +27,26 @@ int main()
 	start=(Node *)malloc(sizeof(Node));
 	tmp=(Node *)malloc(sizeof(Node));
 
+	//tmp=start;	
+
+    start=mknode(data[0]);
+
 	tmp=start;	
 
 	fprintf(stdout, "List: ");
-	for(i = 0; i < 14; i++)
+	for(i = 1; i < 14; i++)
 	{
 		current=mknode(data[i]);
 		tmp->after=current;						
 		current=current->after;
-		tmp=tmp->after	
+		tmp=tmp->after;	
 	}
 
 	current = start;
 
 	while (current != NULL)
 	{
-		fprintf("%d",current);
+		fprintf(stdout,"%hhd ",*(current));
 		current = current->after;  
 	}
 	fprintf(stdout, "\n");
