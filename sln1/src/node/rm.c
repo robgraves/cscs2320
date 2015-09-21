@@ -10,7 +10,13 @@
 //
 Node *rmnode(Node *oldNode)
 {
-	// your implementation here (please remove this comment when done)
+	//oldNode->after=NULL;
+	if (oldNode != NULL)
+	{
+		oldNode->after=NULL;
+		free(oldNode);
+		oldNode=NULL;
+	}
 
 	return(oldNode);
 }

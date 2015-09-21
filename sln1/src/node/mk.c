@@ -12,7 +12,11 @@
 //
 Node *mknode(char value)
 {
-	// your implementation here (please remove this comment when done)
+    Node *this; 
 
-	return(NULL);
+    this=(Node *)malloc(sizeof(Node));
+    this->info=value;
+    this->after=NULL;
+
+	return(this);
 }

@@ -18,7 +18,14 @@
 //
 Node *cpnode(Node *curNode)
 {
-	// your implementation here (please remove this comment when done)
+	Node *this;
+	this=NULL;
+		
+	if (curNode != NULL)
+	{
+		this=mknode(curNode->info);
+		this->after=curNode->after;
+	}
 
-	return(NULL);
+	return(this);
 }

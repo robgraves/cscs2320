@@ -18,6 +18,36 @@ int main()
 
 	// Display the list from beginning to end- the above order
 	// of values should be seen.
+	
+	Node *current;	
+	Node *start;	
+	Node *tmp;
+
+	current=(Node *)malloc(sizeof(Node));
+	start=(Node *)malloc(sizeof(Node));
+	tmp=(Node *)malloc(sizeof(Node));
+
+	tmp=start;	
+
+	fprintf(stdout, "List: ");
+	for(i = 0; i < 14; i++)
+	{
+		current=mknode(data[i]);
+		tmp->after=current;						
+		current=current->after;
+		tmp=tmp->after	
+	}
+
+	current = start;
+
+	while (current != NULL)
+	{
+		fprintf("%d",current);
+		current = current->after;  
+	}
+	fprintf(stdout, "\n");
+
+
 
 	return(0);
 }
