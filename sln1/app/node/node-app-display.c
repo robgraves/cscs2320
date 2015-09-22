@@ -3,6 +3,7 @@
 
 int main()
 {
+    //given code
 	Node *tmp, *tmp2;
 	char input;
 
@@ -32,16 +33,17 @@ int main()
 		else
 			tmp2 = tmp2 -> after;
 	}
+    //end given code
 
-    tmp2 = tmp;
+    tmp2 = tmp;     //setting tmp2 pointer to tmp pointers location
 
-    while (tmp2->after != NULL)
+    while (tmp2->after != NULL)     //while loop for tmp2's after pointer is not equal to NULL
     {
-        printf("%d -> ", tmp2->info);
-        tmp2 = tmp2->after;
+        printf("%d -> ", tmp2->info);   //print tmp's value
+        tmp2 = tmp2->after;             //move tmp2 down the list
     }
-    printf("%d -> ",tmp2->info);
-    printf("NULL\n");
+    printf("%d -> ",tmp2->info);        //prints last value
+    printf("NULL\n");                   //prints NULL
 
 	return(0);
 }

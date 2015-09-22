@@ -3,6 +3,7 @@
 
 int main()
 {
+    //given code for array
 	char data[] = { 3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5, 8, 9, 7 };
 	int i;
 
@@ -10,45 +11,37 @@ int main()
 	for(i = 0; i < 14; i++)
 		fprintf(stdout, "%hhd ", *(data+i));
 	fprintf(stdout, "\n");
+    //end given code for array
 
-	// Create a linked list of nodes, using the node library 
-	// functions where applicable (mknode() specifically), and
-	// have each node contain one of the above array elements,
-	// to have a linked list equivalent of the array.
+	Node *current;	//declaring Node for current pointer
+	Node *start;	//declaring Node for start pointer
+	Node *tmp;      //declaring Node for tmp pointer
 
-	// Display the list from beginning to end- the above order
-	// of values should be seen.
-	
-	Node *current;	
-	Node *start;	
-	Node *tmp;
+	current=(Node *)malloc(sizeof(Node));   //allocating memory for current pointer
+	start=(Node *)malloc(sizeof(Node));     //allocating memory for start pointer
+	tmp=(Node *)malloc(sizeof(Node));       //allocating memory for tmp pointer
 
-	current=(Node *)malloc(sizeof(Node));
-	start=(Node *)malloc(sizeof(Node));
-	tmp=(Node *)malloc(sizeof(Node));
+    start=mknode(data[0]);          //setting start pointer to the first element of the array's node
 
-    start=mknode(data[0]);
+	tmp=start;	                    //setting tmp to start pointer
 
-	tmp=start;	
-
-	fprintf(stdout, "List:  ");
-	for(i = 1; i < 14; i++)
+	fprintf(stdout, "List:  ");     //print statement for List
+	for(i = 1; i < 14; i++)     //for loop to iterate through array and create connecting nodes from it
 	{
-		current=mknode(data[i]);
-		tmp->after=current;						
-		current=current->after;
-		tmp=tmp->after;	
+		current=mknode(data[i]);    //setting current pointer to mknode to iteration of array's element
+		tmp->after=current;		    //setting tmp's after to current				
+		current=current->after;     //moving current down the list
+		tmp=tmp->after;	            //moving tmp down the list
 	}
 
-	current = start;
+	current = start;                //setting current back to the start of the list
 
-	while (current != NULL)
+	while (current != NULL)         //while loop checking for current to not equal NULL
 	{
-		//fprintf(stdout,"%hhd ",*(current));
-		fprintf(stdout,"%hhd ",current->info);
-		current = current->after;  
+		fprintf(stdout,"%hhd ",current->info);  //output current info value
+		current = current->after;               //moves current down the list
 	}
-	fprintf(stdout, "\n");
+	fprintf(stdout, "\n");                      //prints newline
 
 	return(0);
 }

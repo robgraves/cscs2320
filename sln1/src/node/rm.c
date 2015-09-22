@@ -10,13 +10,12 @@
 //
 Node *rmnode(Node *oldNode)
 {
-	//oldNode->after=NULL;
-	if (oldNode != NULL)
+	if (oldNode != NULL)      //if statement checking that passed Node isn't set to NULL, exits if it is
 	{
-		oldNode->after=NULL;
-		free(oldNode);
-		oldNode=NULL;
+		oldNode->after=NULL;  //setting the after pointer in the to be deallocated node to NULL
+		free(oldNode);        //deallocating the passed node
+		oldNode=NULL;         //setting OldNode to NULL
 	}
 
-	return(oldNode);
+	return(oldNode);         
 }

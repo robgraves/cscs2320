@@ -18,14 +18,14 @@
 //
 Node *cpnode(Node *curNode)
 {
-	Node *this;
-	this=NULL;
+	Node *this;                     //declaring Node pointer for this new node
+	this=NULL;                      //setting this Node pointer to NULL
 		
-	if (curNode != NULL)
+	if (curNode != NULL)           //if statement checking for if the passed Node is NULL to fall through
 	{
-		this=mknode(curNode->info);
-		this->after=curNode->after;
+		this=mknode(curNode->info); //creating a new node callign mknode() with info from passed node
+		this->after=curNode->after; //setting the after pointer to the same as passed node's after
 	}
 
-	return(this);
+	return(this);                   //returning pointer to this node
 }
