@@ -31,7 +31,7 @@ int main()
 
 	tmp=start;	
 
-	fprintf(stdout, "List: ");
+	fprintf(stdout, "List:  ");
 	for(i = 1; i < 14; i++)
 	{
 		current=mknode(data[i]);
@@ -44,7 +44,8 @@ int main()
 
 	while (current != NULL)
 	{
-		fprintf(stdout,"%hhd ",*(current));
+		//fprintf(stdout,"%hhd ",*(current));
+		fprintf(stdout,"%hhd ",current->info);
 		current = current->after;  
 	}
 	fprintf(stdout, "\n");
