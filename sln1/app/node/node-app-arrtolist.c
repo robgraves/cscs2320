@@ -27,8 +27,6 @@ int main()
 	start=(Node *)malloc(sizeof(Node));
 	tmp=(Node *)malloc(sizeof(Node));
 
-	//tmp=start;	
-
     start=mknode(data[0]);
 
 	tmp=start;	
@@ -50,8 +48,6 @@ int main()
 		current = current->after;  
 	}
 	fprintf(stdout, "\n");
-
-
 
 	return(0);
 }

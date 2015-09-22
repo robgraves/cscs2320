@@ -33,7 +33,15 @@ int main()
 			tmp2 = tmp2 -> after;
 	}
 
-	// Provide code to display list from start to end
+    tmp2 = tmp;
+
+    while (tmp2->after != NULL)
+    {
+        printf("%d -> ", tmp2->info);
+        tmp2 = tmp2->after;
+    }
+    printf("%d -> ",tmp2->info);
+    printf("NULL\n");
 
 	return(0);
 }
