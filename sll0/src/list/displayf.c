@@ -31,5 +31,41 @@
 //
 void displayf(List *myList, int mode)
 {
-	// your implementation here (please remove this comment when done)
+    //int mode;
+
+    switch(mode)
+    {
+        case 0:
+            mode = 0;
+            break;
+        case 1:
+            mode = 1;
+            break;
+        default:
+            mode = mode % 2;
+            break;
+    }
+
+    if (myList == NULL)
+    {
+        printf("NULL\n");
+    }
+    else if ((myList->first==NULL) && (myList->last==NULL))
+    {
+        printf("-> NULL\n");
+    }
+    else
+    {
+        switch(mode)
+        {
+            case 0:
+
+                break;
+            case 1:
+
+                break;
+        }
+        printf("NULL\n");
+    }
+
 }

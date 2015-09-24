@@ -12,6 +12,11 @@
 //
 List *mklist(void)
 {
-	// your implementation here (please remove this comment when done)
-	return(NULL);
+    List *myList;
+
+    myList=(List *)malloc(sizeof(List));
+    myList->first=NULL;
+    myList->last=NULL;
+
+	return(myList);
 }
