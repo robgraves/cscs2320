@@ -16,6 +16,29 @@
 int getpos(List *myList, Node *given)
 {
 	// your implementation here (please remove this comment when done)
+    int i = 0;
+    Node *tmp;
+
+    if (myList == NULL)
+    {
+        i = -1;
+    }
+    else
+    {
+        tmp = myList->first;
+        if (myList->first == NULL)
+        {
+            i = -1;
+        }
+        else
+        {
+            while (tmp !=NULL)
+            {
+                
+            }
+        }
+    }
+        
 	return(-1);
 }
 

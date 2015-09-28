@@ -31,7 +31,8 @@
 //
 void displayf(List *myList, int mode)
 {
-    //int mode;
+    Node *tmp;
+    int i=0;
 
     switch(mode)
     {
@@ -59,13 +60,29 @@ void displayf(List *myList, int mode)
         switch(mode)
         {
             case 0:
-
+                tmp=myList->first;
+                printf("%d -> ", tmp->info);
+                while (tmp->after != NULL)
+                {
+                    tmp=tmp->after;
+                    printf("%d -> ", tmp->info);
+                }
+                printf("NULL\n");
                 break;
             case 1:
+                tmp=myList->first;
+                printf("[%d] %d -> ", i, tmp->info);
+                while (tmp->after != NULL)
+                {
+                    i++;
+                    tmp=tmp->after;
+                    printf("[%d] %d -> ", i, tmp->info);
+                }
+                printf("NULL\n");
 
                 break;
         }
-        printf("NULL\n");
+        //printf("NULL\n");
     }
 
 }
