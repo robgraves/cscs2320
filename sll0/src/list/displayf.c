@@ -82,7 +82,6 @@ void displayf(List *myList, int mode)
 
                 break;
         }
-        //printf("NULL\n");
     }
 
 }

@@ -15,7 +15,6 @@
 //
 int getpos(List *myList, Node *given)
 {
-	// your implementation here (please remove this comment when done)
     int i = 0;
     Node *tmp;
 
@@ -62,6 +61,37 @@ int getpos(List *myList, Node *given)
 //
 Node *setpos(List *myList, int pos)
 {
-	// your implementation here (please remove this comment when done)
-	return(NULL);
+    Node *tmp;
+    int i = 0;
+
+    if (myList == NULL)
+    {
+        tmp = NULL;
+    }
+    else
+    {
+        tmp = myList->first;
+        if (myList->first == NULL)
+        {
+            tmp = NULL;
+        }
+        else
+        {
+            while (i != pos) 
+            {
+                if (tmp->after != NULL)
+                {
+                    i++;
+                    tmp = tmp->after;
+                }
+                else
+                {
+                    tmp = NULL;
+                    i = pos;
+                }
+            }
+        }
+    }
+
+	return(tmp);
 }
