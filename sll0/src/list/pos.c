@@ -32,14 +32,19 @@ int getpos(List *myList, Node *given)
         }
         else
         {
-            while (tmp !=NULL)
+            while (tmp !=NULL && tmp != given)
             {
-                
+                tmp = tmp->after;
+                i++;
+            }
+            if (tmp == NULL)
+            {
+                i = -2;
             }
         }
     }
         
-	return(-1);
+	return(i);
 }
 
 //////////////////////////////////////////////////////////////////////
