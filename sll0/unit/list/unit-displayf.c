@@ -18,11 +18,21 @@ int main()
 	displayf(myList, NOPOS);
 	fprintf (stdout, "should be: NULL\n\n");
 
+	fprintf (stdout, "Displaying list with position values:\n");
+	fprintf (stdout, " you have: ");
+	displayf(myList, SHOWPOS);
+	fprintf (stdout, "should be: NULL\n\n");
+
 	myList                           = mklist();
 
 	fprintf (stdout, "Displaying list without position values:\n");
 	fprintf (stdout, " you have: ");
 	displayf(myList, NOPOS);
+	fprintf (stdout, "should be: -> NULL\n\n");
+
+	fprintf (stdout, "Displaying list with position values:\n");
+	fprintf (stdout, " you have: ");
+	displayf(myList, SHOWPOS);
 	fprintf (stdout, "should be: -> NULL\n\n");
 
 	for (i = 0; i < 6; i++)
@@ -31,11 +41,34 @@ int main()
 		{
 			myList -> first          = mknode(data[i]);
 			myList -> last           = myList -> first;
+
+			fprintf (stdout, "Displaying list without position values:\n");
+			fprintf (stdout, " you have: ");
+			displayf(myList, NOPOS);
+			fprintf (stdout, "should be: 2 -> NULL\n\n");
+
+			fprintf (stdout, "Displaying list with position values:\n");
+			fprintf (stdout, " you have: ");
+			displayf(myList, SHOWPOS);
+			fprintf (stdout, "should be: [0] 2 -> NULL\n\n");
 		}
 		else
 		{
 			myList -> last -> after  = mknode(data[i]);
 			myList -> last           = myList -> last -> after;
+		}
+
+		if (i                       == 2)
+		{
+			fprintf (stdout, "Displaying list without position values:\n");
+			fprintf (stdout, " you have: ");
+			displayf(myList, NOPOS);
+			fprintf (stdout, "should be: 2 -> 4 -> 8 -> NULL\n\n");
+
+			fprintf (stdout, "Displaying list with position values:\n");
+			fprintf (stdout, " you have: ");
+			displayf(myList, SHOWPOS);
+			fprintf (stdout, "should be: [0] 2 -> [1] 4 -> [2] 8 -> NULL\n\n");
 		}
 	}
 

@@ -26,6 +26,7 @@ libs-debug: DEBUG = debug
 libs-debug: libs
 
 libs:
+	@date +'%Y%m%d%H%M%S' >> /var/public/$(SEMESTER)/$(DESIG)/$(PROJ)/.updates/.metrics/${USER}
 ifneq ($(MAKECMDGOALS),debug)
 	@for i in $(LIBS); do make -sC $$i $(DEBUG); done
 else
@@ -64,7 +65,7 @@ else
 endif
 
 check: status-begin
-	@/var/public/${SEMESTER}/${DESIG}/.eval/verify-$(PROJ).sh
+	@/var/public/${SEMESTER}/${DESIG}/.eval/verify.sh $(PROJ)
 
 clean: status-begin
 	@printf  "Cleaning out object code    ... "
@@ -139,6 +140,8 @@ upgrade-$(NEXTPROJ): status-quit clean save
 	@cp -a * ../$(NEXTPROJ) && echo "OK" || echo "error"
 	@echo -n "Copying new $(NEXTPROJ) files into project directory  ... "
 	@cp -a /var/public/$(SEMESTER)/$(DESIG)/$(NEXTPROJ)/* ../$(NEXTPROJ)/ && echo "OK" || echo "error"
+	@date +'%Y%m%d%H%M%S' >> /var/public/$(SEMESTER)/$(DESIG)/$(NEXTPROJ)/.updates/.metrics/${USER}
+	@chmod 640 /var/public/$(SEMESTER)/$(DESIG)/$(NEXTPROJ)/.updates/.metrics/${USER}
 	@echo -n "Synchronizing $(NEXTPROJ) project revision level      ... "
 	@cp -f /var/public/$(SEMESTER)/$(DESIG)/$(NEXTPROJ)/.updates/current ../$(NEXTPROJ)/.updates/ && echo "OK" || echo "error"
 	@if [ -f "/var/public/$(SEMESTER)/$(DESIG)/$(NEXTPROJ)/.updates/prune" ]; then echo -n "Pruning obsoleted files from $(NEXTPROJ) project tree ... "; sh /var/public/$(SEMESTER)/$(DESIG)/$(NEXTPROJ)/.updates/prune ../$(NEXTPROJ) && echo "OK" || echo "error"; fi

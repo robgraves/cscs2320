@@ -2,7 +2,7 @@ LIBS = -llist -lnode
 CFLAGS = -Wall -static -L../../lib $(LIBS)
 INC = -I ../../inc/
 CC = gcc
-PROJECT = $(shell /bin/pwd | /bin/grep -o '[sd]l[nlsqt][0-9]')
+PROJECT = $(shell /bin/pwd | /bin/grep -o '[sd]l[nlsqt][0-9]' | /usr/bin/sort -u)
 NAME = $(shell echo "$(LIBS)" | /usr/bin/cut -d' ' -f1 | /bin/sed 's/^..//' | tr '[:lower:]' '[:upper:]')
 SRC = $(shell /bin/ls -1 *.c 2>/dev/null)
 BIN = $(SRC:.c=)
