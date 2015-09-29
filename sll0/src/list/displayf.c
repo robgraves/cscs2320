@@ -31,7 +31,7 @@
 //
 void displayf(List *myList, int mode)
 {
-    Node *tmp;
+    Node *tmp = NULL;
     int i=0;
 
     switch(mode)

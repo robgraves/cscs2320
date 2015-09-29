@@ -20,6 +20,10 @@
 //
 List *insert(List *myList, Node *place, Node *newNode)
 {
+    int i = 0;
+    int pos = 0;
+    Node *tmp = NULL;
+
     if (myList == NULL)
     {
         myList = mklist();
@@ -30,8 +34,31 @@ List *insert(List *myList, Node *place, Node *newNode)
     {
         if (newNode != NULL)
         {
-            newNode->after = getpos(myList, place);
-            setpos(myList, getpos(myList, place) - 1)->after = newNode;
+            //newNode->after = getpos(myList, place);
+            //setpos(myList, getpos(myList, place) - 1)->after = newNode;
+            pos = getpos(myList, place);
+            if (pos == -1)
+            {
+                myList->first = newNode; 
+                myList->last = newNode;
+            }
+            else
+            {
+                tmp = myList->first;
+                while (pos != i)
+                {
+                    i++;
+                    tmp=tmp->after;
+                }
+                newNode->after = tmp;
+                i = 0;
+                while (i < pos)
+                {
+                    i++;
+                    tmp=tmp->after;
+                }
+                tmp->after = newNode;
+            }
         }
         else
         {

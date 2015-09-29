@@ -12,7 +12,7 @@
 //
 List *mklist(void)
 {
-    List *myList;
+    List *myList = NULL;
 
     myList=(List *)malloc(sizeof(List));
     myList->first=NULL;
