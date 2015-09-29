@@ -35,7 +35,7 @@ List *insert(List *myList, Node *place, Node *newNode)
         }
         else
         {
-
+            //do nothing if newNode is NULL
         }
     }
 
