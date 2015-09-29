@@ -1,0 +1,4 @@
+insert.c: In function 'insert':
+insert.c:33:28: warning: assignment makes pointer from integer without a cast
+             newNode->after = getpos(myList, place);
+                            ^

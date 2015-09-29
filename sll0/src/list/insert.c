@@ -20,6 +20,24 @@
 //
 List *insert(List *myList, Node *place, Node *newNode)
 {
-	// your implementation here (please remove this comment when done)
-	return(NULL);
+    if (myList == NULL)
+    {
+        myList = mklist();
+        myList->first = newNode;
+        myList->last = newNode;
+    }
+    else
+    {
+        if (newNode != NULL)
+        {
+            newNode->after = getpos(myList, place);
+            setpos(myList, getpos(myList, place) - 1)->after = newNode;
+        }
+        else
+        {
+
+        }
+    }
+
+	return(myList);
 }
