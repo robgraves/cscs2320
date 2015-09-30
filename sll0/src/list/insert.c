@@ -22,6 +22,7 @@ List *insert(List *myList, Node *place, Node *newNode)
 {
     int i = 0;
     int pos = 0;
+    int x = 0;
     Node *tmp = NULL;
 
     if (myList == NULL)
@@ -52,21 +53,37 @@ List *insert(List *myList, Node *place, Node *newNode)
                 }
                 else
                 {
-                    tmp = myList->first;
-                    while (pos != i)
+                    if (place == myList->last)
                     {
-                        i++;
-                        tmp=tmp->after;
+                        newNode->after=place;
+                        x=getpos(myList, place);
+                        tmp=setpos(myList,(x-1));
+                        tmp->after=newNode;
+
                     }
-                    //newNode->after = tmp;
-                    newNode->after = place;
-                    i = 0;
-                    while (i < pos)
+                    else
                     {
-                        i++;
-                        tmp=tmp->after;
+                        //tmp = myList->first;
+                        //while (pos != i)
+                        //{
+                        //    i++;
+                        //    tmp=tmp->after;
+                        //}
+                        //newNode->after = tmp;
+                        //newNode->after = place;
+                        //i = 0;
+                        //while (i < pos)
+                        //{
+                        //    i++;
+                        //    tmp=tmp->after;
+                        //}
+                        //tmp->after = newNode;
+
+                        newNode->after=place;
+                        x=getpos(myList, place);
+                        tmp=setpos(myList,(x-1));
+                        tmp->after=newNode;
                     }
-                    tmp->after = newNode;
                 }
             }
         }
