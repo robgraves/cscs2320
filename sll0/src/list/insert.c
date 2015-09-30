@@ -44,7 +44,8 @@ List *insert(List *myList, Node *place, Node *newNode)
             }
             else
             {
-                if (myList->first->after == NULL)
+                //if (myList->first->after == NULL)
+                if (place == myList->first)
                 {
                     newNode->after=myList->first;
                     myList->first=newNode;
@@ -57,7 +58,8 @@ List *insert(List *myList, Node *place, Node *newNode)
                         i++;
                         tmp=tmp->after;
                     }
-                    newNode->after = tmp;
+                    //newNode->after = tmp;
+                    newNode->after = place;
                     i = 0;
                     while (i < pos)
                     {
