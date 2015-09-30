@@ -44,20 +44,28 @@ List *insert(List *myList, Node *place, Node *newNode)
             }
             else
             {
-                tmp = myList->first;
-                while (pos != i)
+                if (myList->first->after == NULL)
                 {
-                    i++;
-                    tmp=tmp->after;
+                    newNode->after=myList->first;
+                    myList->first=newNode;
                 }
-                newNode->after = tmp;
-                i = 0;
-                while (i < pos)
+                else
                 {
-                    i++;
-                    tmp=tmp->after;
+                    tmp = myList->first;
+                    while (pos != i)
+                    {
+                        i++;
+                        tmp=tmp->after;
+                    }
+                    newNode->after = tmp;
+                    i = 0;
+                    while (i < pos)
+                    {
+                        i++;
+                        tmp=tmp->after;
+                    }
+                    tmp->after = newNode;
                 }
-                tmp->after = newNode;
             }
         }
         else
