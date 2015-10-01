@@ -15,35 +15,35 @@
 //
 int getpos(List *myList, Node *given)
 {
-    int i = 0;
-    Node *tmp = NULL;
+    int i = 0;      //declaring an integer i and initializing it to 0
+    Node *tmp = NULL;  //declaring a Node pointer tmp and intitalizing it to NULL
 
-    if (myList == NULL)
+    if (myList == NULL)     //check for myList being NULL
     {
-        i = -1;
+        i = -1;             //setting i to -1 in the event of a NULL list
     }
     else
     {
-        tmp = myList->first;
-        if (myList->first == NULL)
+        tmp = myList->first;    //setting tmp pointer to the myList's first pointer
+        if (myList->first == NULL)  //checking for an empty list
         {
-            i = -1;
+            i = -1;             //setting it o -1 in the event of an empty list
         }
         else
         {
-            while (tmp !=NULL && tmp != given)
-            {
-                tmp = tmp->after;
-                i++;
+            while (tmp !=NULL && tmp != given)      //checking for tmp pointer not being at end of list
+            {                                       //or not equal to given pointer
+                tmp = tmp->after;                   //moving tmp pointer down the list
+                i++;                                //incrementing i
             }
-            if (tmp == NULL)
+            if (tmp == NULL)                        //if tmp equals NULL then
             {
-                i = -2;
+                i = -2;                             //sets i to -2
             }
         }
     }
         
-	return(i);
+	return(i);                              //returns i as the postition value
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -61,37 +61,37 @@ int getpos(List *myList, Node *given)
 //
 Node *setpos(List *myList, int pos)
 {
-    Node *tmp = NULL;
-    int i = 0;
+    Node *tmp = NULL;       //Declaring a Node pointer and intializing it to NULL
+    int i = 0;              //Declaring an integer i and initializing to 0
 
-    if (myList == NULL)
+    if (myList == NULL)     //testing if myList is NULL
     {
-        tmp = NULL;
+        tmp = NULL;         //sets tmp pointer to NULL
     }
     else
     {
-        tmp = myList->first;
-        if (myList->first == NULL)
+        tmp = myList->first;        //setting tmp pointer to myList's first pointer
+        if (myList->first == NULL)  //if first pointer is NULL
         {
-            tmp = NULL;
+            tmp = NULL;             //sets tmp pointer to NULL                 
         }
         else
         {
-            while (i != pos) 
+            while (i != pos)        //loop while i is not at the given position (pos) 
             {
-                if (tmp->after != NULL)
+                if (tmp->after != NULL) //check for tmp being at the end of the list
                 {
-                    i++;
-                    tmp = tmp->after;
+                    i++;                //incremenet i
+                    tmp = tmp->after;   //move tmp pointer down the list
                 }
                 else
                 {
-                    tmp = NULL;
-                    i = pos;
+                    tmp = NULL;     //assigning tmp pointer to NULL
+                    i = pos;        //assigning i to position to end loop
                 }
             }
         }
     }
 
-	return(tmp);
+	return(tmp);                    //returning tmp pointer
 }

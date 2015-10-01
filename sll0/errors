@@ -1,4 +1,0 @@
-insert.c: In function 'insert':
-insert.c:23:9: warning: unused variable 'i' [-Wunused-variable]
-     int i = 0;
-         ^

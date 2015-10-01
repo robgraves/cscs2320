@@ -20,70 +20,39 @@
 //
 List *insert(List *myList, Node *place, Node *newNode)
 {
-    int i = 0;
-    int pos = 0;
-    int x = 0;
-    Node *tmp = NULL;
+    int pos = 0;        //declaring an integer for position initialized to 0
+    int x = 0;          //declaring an integer for result of getpos() function
+    Node *tmp = NULL;   //declaring a Node pointer called tmp and initializing to NULL
 
-    if (myList == NULL)
+    if (myList == NULL)     //checking for a NULL list
     {
-        myList = mklist();
-        myList->first = newNode;
-        myList->last = newNode;
+        myList = mklist();  //calling mklist() function assigning it to myList
+        myList->first = newNode;    //setting myList's first pointer to the newNode
+        myList->last = newNode;     //setting myList's second pointer to the newNode
     }
     else
     {
-        if (newNode != NULL)
+        if (newNode != NULL)        //check for newNode being NULL or drop out
         {
-            //newNode->after = getpos(myList, place);
-            //setpos(myList, getpos(myList, place) - 1)->after = newNode;
-            pos = getpos(myList, place);
-            if (pos == -1)
+            pos = getpos(myList, place);    //assigning pos the result of getpos() with myList and place 
+            if (pos == -1)                  //as arguments
             {
-                myList->first = newNode; 
-                myList->last = newNode;
+                myList->first = newNode;    //if pos is -1 set first pointer to newNode 
+                myList->last = newNode;     //and set last pointer to newNode
             }
             else
             {
-                //if (myList->first->after == NULL)
-                if (place == myList->first)
+                if (place == myList->first)     //check for place being equal to first node
                 {
-                    newNode->after=myList->first;
-                    myList->first=newNode;
+                    newNode->after=myList->first;   //assigning newNode's after pointer to first pointer
+                    myList->first=newNode;    //setting first pointer to newNode
                 }
                 else
                 {
-                    if (place == myList->last)
-                    {
-                        newNode->after=place;
-                        x=getpos(myList, place);
-                        tmp=setpos(myList,(x-1));
-                        tmp->after=newNode;
-
-                    }
-                    else
-                    {
-                        //tmp = myList->first;
-                        //while (pos != i)
-                        //{
-                        //    i++;
-                        //    tmp=tmp->after;
-                        //}
-                        //newNode->after = tmp;
-                        //newNode->after = place;
-                        //i = 0;
-                        //while (i < pos)
-                        //{
-                        //    i++;
-                        //    tmp=tmp->after;
-                        //}
-                        //tmp->after = newNode;
-
-                        newNode->after=place;
-                        x=getpos(myList, place);
-                        tmp=setpos(myList,(x-1));
-                        tmp->after=newNode;
-                    }
+                    newNode->after=place;       //setting newNode's after to place pointer.
+                    x=getpos(myList, place);    //seting x to result of getpos() w/ myList and place
+                    tmp=setpos(myList,(x-1));   //setting tmp pointer to result of setpos() myList, x-1
+                    tmp->after=newNode;         //setting the pointer after tmp to the newNode
                 }
             }
         }
@@ -93,5 +62,5 @@ List *insert(List *myList, Node *place, Node *newNode)
         }
     }
 
-	return(myList);
+	return(myList);     //returning pointer to myList
 }

@@ -12,11 +12,11 @@
 //
 List *mklist(void)
 {
-    List *myList = NULL;
+    List *myList = NULL;        //declaring a List pointer and setting to NULL
 
-    myList=(List *)malloc(sizeof(List));
-    myList->first=NULL;
-    myList->last=NULL;
+    myList=(List *)malloc(sizeof(List));    //Allocating a List the size of List and calling it myList
+    myList->first=NULL;                     //setting myList's first pointer to NULL
+    myList->last=NULL;                      //setting myList's last pointer to NULL
 
-	return(myList);
+	return(myList);                         //returning pointer to myList
 }
