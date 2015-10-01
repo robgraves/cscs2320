@@ -24,6 +24,51 @@
 //
 List *append(List *myList, Node *place, Node *newNode)
 {
-	// your implementation here (please remove this comment when done)
-	return(NULL);
+    //variable and pointer declarations and initializations
+    int pos = 0;
+    int x = 0;
+    Node *tmp = NULL;
+    
+    if (myList == NULL)
+    {
+        // do nothing
+    }
+    else
+    {
+        //check for NULL list
+        if (newNode == NULL)
+        {
+            //do nothing
+        }
+        else
+        {
+            //check for empty list
+            if (myList->first == NULL)
+            {
+                //set first and last pointers to newNode
+                myList->first = newNode;
+                myList->last = newNode;
+            }
+            else
+            {
+                //check for if at end of list
+                if (place == myList->last)
+                {
+                    //appends newNode to end of list and adjusts last pointer
+                    place->after = newNode;
+                    newNode->after = NULL;
+                    myList->last = newNode;
+                }
+                else
+                {
+                    //appends newNode after place pointer
+                    newNode->after = place->after;
+                    place->after = newNode;
+                }
+            }
+        }
+    }
+
+
+	return(myList);
 }
