@@ -31,5 +31,37 @@
 //
 void displayb(List *myList, int mode)
 {
-	// your implementation here (please remove this comment when done)
+    //variable and pointer declarations
+    Node *tmp = NULL;
+    int i = 0;
+
+    //switch statement for mode
+    switch(mode)
+    {
+        case 0:
+            mode = 0;
+            break;
+        case 1:
+            mode = 1;
+            break;
+        default:
+            mode = mode % 2;
+            break;
+    }
+    
+    //checking for NULL list
+    if (myList == NULL)
+    {
+        printf("NULL\n");
+    }
+    //check for empty list
+    else if ((myList->first == NULL) && (myList->last == NULL))
+    {
+        printf("NULL <-\n");
+    }
+    //code for a populated list
+    else
+    {
+
+    }
 }
