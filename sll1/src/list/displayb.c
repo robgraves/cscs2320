@@ -63,7 +63,7 @@ void displayb(List *myList, int mode)
     //code for a populated list
     else
     {
-        tmp = myList->first;
+        //tmp = myList->first;
         //switch statement for actual mode
         switch(mode)
         {
@@ -75,7 +75,7 @@ void displayb(List *myList, int mode)
                 //    tmp = tmp->after;
                 //}
                 //check for one node list
-                if (tmp == myList->first)
+                if ((tmp == myList->first) && (tmp->after == NULL))
                 {
                     //print NULL and value of node's info variable
                     printf("NULL ");
@@ -112,11 +112,11 @@ void displayb(List *myList, int mode)
                 //    tmp = tmp->after;
                 //}
                 //check for one node list
-                if (tmp == myList->first)
+                if ((tmp == myList->first) && (tmp->after == NULL))
                 {
                     //print NULL and value of node's info variable
                     printf("NULL ");
-                    printf("<- %d [%d]\n", tmp->info, i);
+                    printf("<- [%d] %d\n", i, tmp->info);
                 }
                 //else for multi-node list
                 else
@@ -130,17 +130,17 @@ void displayb(List *myList, int mode)
                     //printing NULL and value of last node
                     i = x;  //gets index of final node
                     printf("NULL ");
-                    printf("<- %d [%d]", tmp->info, i);
+                    printf("<- [%d] %d ", i, tmp->info);
                     //loop for as long as not at beginning of list
                     while (tmp != myList->first)
                     {
                         i--;
                         tmp = setpos(myList, (x-1));
                         //print value of current node's info variable
-                        printf("<- %d [%d]", tmp->info, i);
+                        printf("<- [%d] %d ", i, tmp->info);
                     }
                     //print first node
-                    printf("<- %d \n", tmp->info);
+                    printf("<- [%d] %d \n", i, tmp->info);
                 }
                 break;
         }
