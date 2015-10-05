@@ -24,18 +24,15 @@
 //
 List *append(List *myList, Node *place, Node *newNode)
 {
-    //variable and pointer declarations and initializations
-    int pos = 0;
-    int x = 0;
-    Node *tmp = NULL;
-    
+   
+    //check if NULL list
     if (myList == NULL)
     {
         // do nothing
     }
     else
     {
-        //check for NULL list
+        //check for NULL node
         if (newNode == NULL)
         {
             //do nothing
