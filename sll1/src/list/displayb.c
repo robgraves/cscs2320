@@ -70,11 +70,6 @@ void displayb(List *myList, int mode)
         {
             //case 0 displays without indices
             case 0:
-                //moving tmp pointer to last node in list
-                //while (tmp->after != NULL)
-                //{
-                //    tmp = tmp->after;
-                //}
                 //check for one node list
                 if ((tmp == myList->first) && (tmp->after == NULL))
                 {
@@ -85,6 +80,7 @@ void displayb(List *myList, int mode)
                 //else for multi-node list
                 else
                 {
+                    //moving tmp pointer to last node in list
                     while (tmp->after != NULL)
                     {
                         tmp = tmp->after;
@@ -92,37 +88,17 @@ void displayb(List *myList, int mode)
                     printf("NULL ");
                     //calling getpos() function, passing myList and tmp pointer
                     x = getpos(myList, tmp);
-                    //printf("<- %d ", tmp->info);
+                    //looping backwards through list and printing each node
                     for (c=x;c>=0;c--)
                     {
-                        //printf("<- %d ", tmp->info);
                         tmp = setpos(myList, (x--));
                         printf("<- %d ", tmp->info);
-                        
                     }
-                    //printing NULL and value of last node
-                    ///printf("NULL ");
-                    ///printf("<- %d ", tmp->info);
-                    //loop for as long as not at beginning of list
-                    //while (tmp != myList->first)
-                    ///while (tmp != NULL)
-                    ///{
-                        //tmp = setpos(myList, (x-1));
-                        //print value of current node's info variable
-                    ///    printf("<- %d ", tmp->info);
-                    ///}
-                    //print first node
-                    //printf("<- %d \n", tmp->info);
                     printf("\n");
                 }
                 break;
             //case 1 displays with indices
             case 1:
-                //moving tmp pointer to last node in list
-                //while (tmp->after != NULL)
-                //{
-                //    tmp = tmp->after;
-                //}
                 //check for one node list
                 if ((tmp == myList->first) && (tmp->after == NULL))
                 {
@@ -133,6 +109,7 @@ void displayb(List *myList, int mode)
                 //else for multi-node list
                 else
                 {
+                    //moving tmp pointer to last node in list
                     while (tmp->after != NULL)
                     {
                         tmp = tmp->after;
@@ -140,38 +117,15 @@ void displayb(List *myList, int mode)
                     printf("NULL ");
                     //calling getpos() function, passing myList and tmp pointer
                     x = getpos(myList, tmp);
-                    //printf("<- %d ", tmp->info);
+                    //setting i to returned posiiton at end of list
                     i=x;
+                    //looping backwards through list and printing each node
                     for (c=x;c>=0;c--)
                     {
-                        //printf("<- %d ", tmp->info);
                         tmp = setpos(myList, (x--));
-                        //printf("<- %d ", tmp->info);
                         printf("<- [%d] %d ", i, tmp->info);
                         i--;
-                        
                     }
-                    ///while (tmp->after != NULL)
-                    ///{
-                    ///    tmp = tmp->after;
-                    ///}
-                    //calling getpos() function, passing myList and tmp pointer
-                    ///x = getpos(myList, tmp);
-                    //printing NULL and value of last node
-                    ///i = x;  //gets index of final node
-                    ///printf("NULL ");
-                    ///printf("<- [%d] %d ", i, tmp->info);
-                    //loop for as long as not at beginning of list
-                    //while (tmp != myList->first)
-                    ///while (tmp != NULL)
-                    ///{
-                    ///    i--;
-                        //tmp = setpos(myList, (x-1));
-                        //print value of current node's info variable
-                    ///    printf("<- [%d] %d ", i, tmp->info);
-                    ///}
-                    //print first node
-                    //printf("<- [%d] %d \n", i, tmp->info);
                     printf("\n");
                 }
                 break;

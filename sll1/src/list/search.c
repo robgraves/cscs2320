@@ -18,6 +18,39 @@
 //
 Node *searchlist(List *myList, char value)
 {
-	// your implementation here (please remove this comment when done)
-	return(NULL);
+    //declaring and initializing tmp pointer to NULL
+    Node *tmp = NULL;
+
+    //checking for NULL list
+    if (myList == NULL)
+    {
+        //do nothing
+    }
+    else
+    {
+        //checking for empty list
+        if ((myList->first == NULL) && (myList->last == NULL))
+        {
+            //do nothing
+        }
+        else
+        {
+            //setting tmp to first node
+            tmp = myList->first;
+            //looping while current node doesn't contain value and
+            //not at the end of the list
+            while ((value != tmp->info) && (tmp->after != NULL)) 
+            {   
+                    //moving tmp down the list
+                    tmp = tmp->after;
+            }
+            //checking for value not being in list
+            if ((tmp->after == NULL) && (tmp->info != value))
+            {
+                tmp = NULL;
+            }
+        }
+    }
+
+	return(tmp);
 }
