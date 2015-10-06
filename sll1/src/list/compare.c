@@ -86,6 +86,173 @@
 //
 uc compare(List *myList1, List *myList2, ulli *pos)
 {
-	// your implementation here (please remove this comment when done)
-	return(CMP_L1_LESS|CMP_L2_LESS);
+    //variable and pointer declarations and initializations
+    Node *tmp   = NULL;
+    Node *tmp2  = NULL;
+    unsigned char returnable = 0;
+    //(*pos) = 0;
+    int i = 1;
+    
+    //status of myList1 and myList2 respectively
+    //0 is NULL, 1 is empty, 2 is populated
+    int status1 = 0; 
+    int status2 = 0;
+
+    //setting status1 for myList1 to 0 for NULL list,
+    //1 for EMPTY list, and 2 for a populated list
+    if (myList1 == NULL)
+    {
+        status1 = 0;
+    }
+    else if (myList1->first == NULL)
+    {
+        status1 = 1;   
+    }
+    else
+    {
+        status1 = 2;
+    }
+
+    //setting status2 for myList2 to 0 for NULL list,
+    //1 for EMPTY list, and 2 for a populated list
+    if (myList2 == NULL)
+    {
+        status2 = 0;
+    }
+    else if (myList2->first == NULL)
+    {
+        status2 = 1;
+    }
+    else
+    {
+        status2 = 2;
+    }
+
+    if ((status1 == 2) && (status2 == 2))
+    {
+        //setting tmp to beginning of list 1 and
+        //setting tmp2 to beginning of list 2
+        tmp     = myList1->first;
+        tmp2    = myList2->first;
+        
+        //checking for single node list
+
+        //moving tmp and tmp2 pointers through lists
+        while (tmp != NULL)
+        {
+            
+            if (tmp->info != tmp2->info)
+            {
+                (*pos)=i;
+            }
+            else
+            {
+                tmp = tmp->after;
+                tmp2 = tmp2->after;
+                i++;
+            }
+           
+            //tmp = tmp->after;
+            //tmp2 = tmp2->after;
+
+        }
+
+    }
+    else
+    {
+        //checking for NULL and NULL lists
+        if ((status1 == 0) && (status2 == 0))
+        {
+            (*pos)=0;
+            returnable = (CMP_L1_NULL|CMP_L2_NULL);
+        }
+        //checking for EMPTY and NULL lists
+        if ((status1 == 1) && (status2 == 0))
+        {
+            (*pos)=0;
+            returnable = (CMP_L1_EMPTY|CMP_L2_NULL);
+        }
+        //checking for NULL and EMPTY lists
+        if ((status1 == 0) && (status2 == 1))
+        {
+            (*pos)=0;
+            returnable = (CMP_L1_NULL|CMP_L2_EMPTY);
+        }
+        //checking for EMPTY and EMPTY lists
+        if ((status1 == 1) && (status2 == 1))
+        {
+            (*pos)=0;
+            returnable = (CMP_L1_EMPTY|CMP_L2_EMPTY);
+        }
+
+        //checking for NULL and populated lists
+        if ((status1 == 0) && (status2 == 2))
+        {
+            (*pos)=0;
+            returnable = (CMP_L1_NULL);
+        }
+        //checking for EMPTY and populated lists
+        if ((status1 == 1) && (status2 == 2))
+        {
+            (*pos)=0;
+            returnable = (CMP_L1_EMPTY);
+        }
+        //checking for populated and NULL lists
+        if ((status1 == 2) && (status2 == 0))
+        {
+            (*pos)=0;
+            returnable = (CMP_L2_NULL);
+        }
+        //checking for populated and EMPTY lists
+        if ((status1 == 2) && (status2 == 1))
+        {
+            (*pos)=0;
+            returnable = (CMP_L2_EMPTY);
+        }
+    }
+
+    //setting tmp to beginning of list 1 and
+    //setting tmp2 to beginning of list 2
+    //tmp     = myList1->first;
+    //tmp2    = myList2->first;
+    
+    //checking for single node list
+
+    //moving tmp and tmp2 pointers through lists
+    //while (tmp != NULL)
+    //{
+    
+   //     tmp = tmp->after;
+   //     tmp2 = tmp2->after;
+
+    //}
+
+    /*
+    if (tmp->info != tmp2->info)
+    {
+        (*pos)=i;
+    }
+    else
+    {
+
+    }
+    */
+
+    //if ((myList1 == NULL) && (myList2 == NULL))
+    //{
+    //    (*pos)=0;
+    //    returnable = (CMP_L1_NULL|CMP_L2_NULL);
+    //}
+    //if ((myList1->first == NULL) (myList2 == NULL))
+    //{
+    //    (*pos)=0;
+    //    returnable = (CMP_L1_EMPTY|CMP_L2_NULL);
+    //}
+    //setting tmp to beginning of list 1 and
+    //setting tmp2 to beginning of list 2
+    //tmp     = myList1->first;
+    //tmp2    = myList2->first;
+
+	//return(CMP_L1_LESS|CMP_L2_LESS);
+	return(returnable);
 }
