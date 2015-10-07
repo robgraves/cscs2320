@@ -91,7 +91,7 @@ uc compare(List *myList1, List *myList2, ulli *pos)
     Node *tmp2  = NULL;
     unsigned char returnable = 0;
     //(*pos) = 0;
-    int i = 1;
+    int i = 0;
     
     //status of myList1 and myList2 respectively
     //0 is NULL, 1 is empty, 2 is populated
@@ -138,14 +138,69 @@ uc compare(List *myList1, List *myList2, ulli *pos)
         //checking for single node list
 
         //moving tmp and tmp2 pointers through lists
-        while (tmp != NULL)
+        //while tmp and tmp2 aren't NULL
+        while ((tmp != NULL) && (tmp2 != NULL))
         {
+            //if values in nodes are different
+            if (tmp->info != tmp2->info)
+            {
+                //get current position
+                (*pos)=i;
+
+                //determine which value is larger
+
+                if (tmp->info > tmp2->info)
+                {
+                    returnable = (CMP_L1_GREATER|CMP_L2_LESS);
+                }
+                if (tmp2->info > tmp->info)
+                {
+                    returnable = (CMP_L1_LESS|CMP_L2_GREATER);
+                }
+
+                //force end of loop
+                tmp == NULL;
+                tmp2 == NULL;
+            }
+            //if myList1 is shorter than return postition
+            //and returnable is assigned list 2 as greater
+            if (tmp == NULL)
+            {
+                (*pos)=i;
+                returnable = (CMP_L2_GREATER);
+            }
+            //if myList2 is shorter than return postition
+            //and returnable is assigned list 1 as greater
+            if (tmp2 == NULL)
+            {   
+                (*pos)=i;
+                returnable = (CMP_L1_GREATER);
+            }
             
             tmp = tmp->after;
             tmp2 = tmp2->after;
             i++;
 
         }
+
+        /*
+        //if myList1 is shorter than return postition
+        //and returnable is assigned list 2 as greater
+        if (tmp == NULL)
+        {
+            (*pos)=i;
+            returnable = (CMP_L2_GREATER);
+        }
+        //if myList2 is shorter than return postition
+        //and returnable is assigned list 1 as greater
+        if (tmp2 == NULL)
+        {   
+            (*pos)=i;
+            returnable = (CMP_L1_GREATER);
+        }
+        */
+
+        //if position is NULL return position as i
         if (pos != NULL)
         {    
             (*pos)=i;
