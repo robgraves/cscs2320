@@ -148,7 +148,6 @@ uc compare(List *myList1, List *myList2, ulli *pos)
                 (*pos)=i;
 
                 //determine which value is larger
-
                 if (tmp->info > tmp2->info)
                 {
                     returnable = (CMP_L1_GREATER|CMP_L2_LESS);
@@ -159,9 +158,10 @@ uc compare(List *myList1, List *myList2, ulli *pos)
                 }
 
                 //force end of loop
-                tmp == NULL;
-                tmp2 == NULL;
+                //tmp == NULL;
+                //tmp2 == NULL;
             }
+
             //if myList1 is shorter than return postition
             //and returnable is assigned list 2 as greater
             if (tmp == NULL)
@@ -212,50 +212,50 @@ uc compare(List *myList1, List *myList2, ulli *pos)
         //checking for NULL and NULL lists
         if ((status1 == 0) && (status2 == 0))
         {
-            (*pos)=0;
+            (*pos)=i;
             returnable = (CMP_L1_NULL|CMP_L2_NULL);
         }
         //checking for EMPTY and NULL lists
         if ((status1 == 1) && (status2 == 0))
         {
-            (*pos)=0;
+            (*pos)=i;
             returnable = (CMP_L1_EMPTY|CMP_L2_NULL);
         }
         //checking for NULL and EMPTY lists
         if ((status1 == 0) && (status2 == 1))
         {
-            (*pos)=0;
+            (*pos)=i;
             returnable = (CMP_L1_NULL|CMP_L2_EMPTY);
         }
         //checking for EMPTY and EMPTY lists
         if ((status1 == 1) && (status2 == 1))
         {
-            (*pos)=0;
+            (*pos)=i;
             returnable = (CMP_L1_EMPTY|CMP_L2_EMPTY);
         }
 
         //checking for NULL and populated lists
         if ((status1 == 0) && (status2 == 2))
         {
-            (*pos)=0;
+            (*pos)=i;
             returnable = (CMP_L1_NULL);
         }
         //checking for EMPTY and populated lists
         if ((status1 == 1) && (status2 == 2))
         {
-            (*pos)=0;
+            (*pos)=i;
             returnable = (CMP_L1_EMPTY);
         }
         //checking for populated and NULL lists
         if ((status1 == 2) && (status2 == 0))
         {
-            (*pos)=0;
+            (*pos)=i;
             returnable = (CMP_L2_NULL);
         }
         //checking for populated and EMPTY lists
         if ((status1 == 2) && (status2 == 1))
         {
-            (*pos)=0;
+            (*pos)=i;
             returnable = (CMP_L2_EMPTY);
         }
     }
@@ -302,6 +302,5 @@ uc compare(List *myList1, List *myList2, ulli *pos)
     //tmp     = myList1->first;
     //tmp2    = myList2->first;
 
-	//return(CMP_L1_LESS|CMP_L2_LESS);
 	return(returnable);
 }
