@@ -141,20 +141,14 @@ uc compare(List *myList1, List *myList2, ulli *pos)
         while (tmp != NULL)
         {
             
-            if (tmp->info != tmp2->info)
-            {
-                (*pos)=i;
-            }
-            else
-            {
-                tmp = tmp->after;
-                tmp2 = tmp2->after;
-                i++;
-            }
-           
-            //tmp = tmp->after;
-            //tmp2 = tmp2->after;
+            tmp = tmp->after;
+            tmp2 = tmp2->after;
+            i++;
 
+        }
+        if (pos != NULL)
+        {    
+            (*pos)=i;
         }
 
     }
