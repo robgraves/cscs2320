@@ -26,7 +26,9 @@
 List *obtain(List *myList, Node **thatNode)
 {
     //declaration and initialization of variable(s)
+    //and pointer(s)
     int x = 0;
+    Node *tmp = NULL;
 
     //checking for a NULL list
     if (myList != NULL)
@@ -62,7 +64,10 @@ List *obtain(List *myList, Node **thatNode)
                         }
                         else
                         {
-
+                            x = getpos(myList, (*thatNode));
+                            tmp = setpos(myList, (x-1));
+                            tmp->after = (*thatNode)->after;
+                            (*thatNode)->after = NULL;
                         }
                     }
                 }
