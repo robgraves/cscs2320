@@ -15,6 +15,27 @@
 //
 List *clearlist(List *myList)
 {
-	// your implementation here (please remove this comment when done)
-	return(NULL);
+    //declaring and initializing variables and pointers
+    Node *tmp = NULL;
+    Node *tmp2 = NULL;
+
+    if (myList != NULL)
+    {    
+        if (myList->first != NULL)
+        {
+            while (myList->first != NULL)
+            {
+                tmp = myList->first;
+                tmp2 = tmp->after;
+
+                myList = obtain(myList, (&tmp));
+                tmp = rmnode(tmp);
+                myList->first = tmp2;
+            }
+            myList->first = NULL;
+            myList->last = NULL;
+        }
+    }
+
+	return(myList);
 }

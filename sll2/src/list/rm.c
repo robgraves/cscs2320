@@ -12,6 +12,9 @@
 //
 List *rmlist(List *myList)
 {
-	// your implementation here (please remove this comment when done)
-	return(NULL);
+    myList = clearlist(myList);
+    free(myList);
+    myList = NULL;
+
+	return(myList);
 }
