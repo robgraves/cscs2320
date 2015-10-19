@@ -25,6 +25,61 @@
 //
 List *obtain(List *myList, Node **thatNode)
 {
-	// your implementation here (please remove this comment when done)
-	return(NULL);
+    //declaration and initialization of variable(s)
+    int x = 0;
+
+    //checking for a NULL list
+    if (myList != NULL)
+    {
+        //checking if thatNode is NULL
+        if (thatNode != NULL)
+        {
+            //checking if thatNode pointer is NULL
+            if ((*thatNode) != NULL)
+            {
+                //checking to see if one node list
+                if (myList->first == myList->last)    
+                {
+                    myList->first = NULL;
+                    myList->last = NULL;
+                }
+                else
+                {
+                    //checking if thatNode is first node in list
+                    if (myList->first == (*thatNode))
+                    {
+                        myList->first = (*thatNode)->after;
+                        (*thatNode)->after = NULL;
+                    }
+                    else
+                    {
+                        //checking if thatNode is last node in list
+                        if ((*thatNode)->after == NULL)
+                        {
+                            x = getpos(myList, (*thatNode)); 
+                            myList->last = setpos(myList, (x-1));
+                            myList->last->after = NULL;
+                        }
+                        else
+                        {
+
+                        }
+                    }
+                }
+            }
+            else
+            {
+                //do nothing on NULL thatNode pointer
+            }
+        }
+        else
+        {
+            //do nothing if thatNode is NULL
+        }
+    }
+    else
+    {
+        //do nothing on NULL list
+    }
+	return(myList);
 }

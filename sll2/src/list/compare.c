@@ -158,8 +158,8 @@ uc compare(List *myList1, List *myList2, ulli *pos)
                 }
 
                 //force end of loop
-                tmp == NULL;
-                tmp2 == NULL;
+                //tmp == NULL;
+                //tmp2 == NULL;
             }
             
             //if myList1 is shorter than return postition
