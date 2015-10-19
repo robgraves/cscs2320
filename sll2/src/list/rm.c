@@ -12,8 +12,11 @@
 //
 List *rmlist(List *myList)
 {
+    //clearing myList
     myList = clearlist(myList);
+    //deallocating myList
     free(myList);
+    //setting myList pointer to NULL
     myList = NULL;
 
 	return(myList);
