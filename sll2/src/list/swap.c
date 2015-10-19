@@ -28,6 +28,41 @@
 //
 List *swapnode(List *myList, Node *item1, Node *item2)
 {
-	// your implementation here (please remove this comment when done)
-	return(NULL);
+    //declaration and initialization of variables and pointers
+    int item1pos = 0;
+    int item2pos = 0;
+    
+    //check for NULL list
+    if (myList != NULL)
+    {
+        //check for EMPTY list
+        if (myList->first != NULL)
+        {
+            //checking if either node is NULL
+            if ((item1 == NULL) || (item2 == NULL))
+            {
+                //do nothing if either node is NULL   
+            }
+            else
+            {
+                //getting index of both node items at starting positions
+                item1pos = getpos(myList, item1);
+                item2pos = getpos(myList, item2);
+                
+                item1 = setpos(myList, item1pos);
+                item2 = setpos(myList, item2pos);
+            }
+        }
+        else
+        {
+            //do nothing if an EMPTY list
+        }
+
+    }
+    else
+    {
+        //do nothing if a NULL list
+    }
+
+	return(myList);
 }
