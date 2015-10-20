@@ -49,8 +49,19 @@ List *swapnode(List *myList, Node *item1, Node *item2)
                 item1pos = getpos(myList, item1);
                 item2pos = getpos(myList, item2);
                 
-                item1 = setpos(myList, item1pos);
-                item2 = setpos(myList, item2pos);
+                //check for two node list
+                if (myList->first->after->after == NULL)
+                {
+                    myList = obtain(myList, &item2);
+                    myList = insert(myList, item1, item2);
+                }
+                else
+                {
+                    myList = obtain(myList, &item2);
+                    myList = insert(myList, item1, item2);
+
+                }
+
             }
         }
         else
