@@ -29,12 +29,7 @@
 List *swapnode(List *myList, Node *item1, Node *item2)
 {
     //declaration and initialization of variables and pointers
-    int item1pos = 0;
-    int item2pos = 0;
-    int pos = 0;
-
     Node *tmp = NULL;
-    Node *tmp2 = NULL;
     
     //check for NULL list
     if (myList != NULL)
@@ -49,61 +44,28 @@ List *swapnode(List *myList, Node *item1, Node *item2)
             }
             else
             {
+                //checking that nodes are notthe same
                 if (item1 != item2)
                 {
-                    //getting index of both node items at starting positions
-                    item1pos = getpos(myList, item1);
-                    item2pos = getpos(myList, item2);
-                    
-                    //check for two node list
-                    if (myList->first->after->after == NULL)
-                    {
-                        myList = obtain(myList, &item2);
-                        myList = insert(myList, item1, item2);
-                    }
-                    else
-                    {
-                        if ((item1 == myList->first) || (item2 == myList->first))
-                        {
-                            //first pointer needs to be reassigned
-                            if (item1 == myList->first)
-                                myList->first = item1->after;
-                            if (item2 == myList->first)
-                                myList->first = item2->after;
-                            myList = obtain(myList, &item2);
-                            myList = insert(myList, item1, item2);
-                            myList = obtain(myList, &item1);
-                            myList = insert(myList, tmp, item1);
+                    //copies the first node
+                    tmp = cpnode(item1);
+                    //inserts copied node before the original
+                    myList = insert(myList, item1, tmp);
+                    //disconnects the original item1 node
+                    myList = obtain(myList, &item1);
+                    //inserts item1 node before item2 node
+                    myList = insert(myList, item2, item1);
+                    //obtains, disconnecting the item2 node
+                    myList = obtain(myList, &item2);
+                    //inserts item2 node before the co[pied item1 node
+                    myList = insert(myList, tmp, item2);
+                    //pulls out the copied item1 node at tmp
+                    myList = obtain(myList, &tmp);
+                    //deallocates node at tmp
+                    tmp = rmnode(tmp);
+                    //set tmp pointer back to NULL
+                    tmp = NULL;
 
-                        }
-                        else if ((item1 == myList->last) || (item2 == myList->last))
-                        {
-                            //last pointer needs to be reassigned
-                            if (item1 == myList->last)
-                            {
-                                pos = getpos(myList, item1);
-                                myList->last = setpos(myList, pos-1);
-                            }
-                            if (item2 == myList->last)
-                            {
-                                pos = getpos(myList, item2);
-                                myList->last = setpos(myList, pos-1);
-                            }
-                            myList = obtain(myList, &item2);
-                            myList = insert(myList, item1, item2);
-                            myList = obtain(myList, &item1);
-                            myList = insert(myList, tmp, item1);
-                        }
-                        else
-                        {
-                            //all middle node cases
-                            tmp = item1->after;
-                            myList = obtain(myList, &item2);
-                            myList = insert(myList, item1, item2);
-                            myList = obtain(myList, &item1);
-                            myList = insert(myList, tmp, item1);
-                        }
-                    }
                 }
                 else
                 {
