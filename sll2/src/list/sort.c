@@ -21,6 +21,29 @@
 //
 List *sortlist(List *myList, int mode)
 {
-	// your implementation here (please remove this comment when done)
-	return(NULL);
+    //declaration of variables and pointers
+    List *sortList = NULL;
+
+    //switch statement from mode argument
+    switch(mode)
+    {
+        case 0:
+            mode = 0;
+            break;
+        case 1:
+            mode = 1;
+            break;
+        case 2:
+            mode = 2;
+            break;
+        //mods any number not 0,1, or 2
+        default:
+            mode = mode % 3;
+            break;
+    }
+
+    sortList = cplist(myList);
+
+
+    return(sortList);
 }
