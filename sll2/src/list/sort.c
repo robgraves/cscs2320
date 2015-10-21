@@ -42,6 +42,7 @@ List *sortlist(List *myList, int mode)
             break;
     }
 
+    //copies original list
     sortList = cplist(myList);
 
 
