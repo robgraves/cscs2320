@@ -36,6 +36,9 @@ List *cplist(List *oldList)
             //setting newList's first and last pointers to NULL
             newList->first = NULL;
             newList->last = NULL;
+
+            //setting myList's quantity to 0
+            newList->qty = 0;
         }
         else
         {
@@ -54,6 +57,9 @@ List *cplist(List *oldList)
                 tmp2->after = cpnode(tmp);
                 //moving tmp2 down the newList
                 tmp2 = tmp2->after;
+
+                //increment qty by 1 each iteration
+                //newList->qty = newList->qty + 1;
             }
             //assigning newList's last pointer to last created node
             newList->last = tmp2;

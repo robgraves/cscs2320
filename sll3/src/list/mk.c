@@ -12,11 +12,24 @@
 //
 List *mklist(void)
 {
-    List *myList = NULL;        //declaring a List pointer and setting to NULL
+    //declaring and initializing
+    //variables and pointers
+    List *myList = NULL;
 
-    myList=(List *)malloc(sizeof(List));    //Allocating a List the size of List and calling it myList
-    myList->first=NULL;                     //setting myList's first pointer to NULL
-    myList->last=NULL;                      //setting myList's last pointer to NULL
+    //allocating myList to size of List struct
+    myList=(List *)malloc(sizeof(List));
 
-	return(myList);                         //returning pointer to myList
+    //setting myList's first and last pointers to NULL
+    myList->first=NULL;
+    myList->last=NULL;
+
+    //setting new element in List struct, 
+    //qty (quantity of nodes in list) to 0
+    myList->qty = 0;
+
+    //setting new element in List struct, 
+    //after (pointing to list after current list) to NULL
+    myList->after = NULL;
+
+	return(myList); 
 }
