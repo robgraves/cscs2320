@@ -84,164 +84,117 @@
 //             you are to have only ONE return statement for this
 //             entire function. Change the existing one as needed.
 //
+
+///////////////////////////////////////////////////////////////////
+//
+//  Borrowing my buddy Dan Shadeck's code for educational purposes
+//
+///////////////////////////////////////////////////////////////////
+
 uc compare(List *myList1, List *myList2, ulli *pos)
 {
-    //variable and pointer declarations and initializations
-    Node *tmp   = NULL;
-    Node *tmp2  = NULL;
-    unsigned char returnable = 0;
-    //(*pos) = 0;
-    int i = 0;
-    
-    //status of myList1 and myList2 respectively
-    //0 is NULL, 1 is empty, 2 is populated
-    int status1 = 0; 
-    int status2 = 0;
-
-    //setting status1 for myList1 to 0 for NULL list,
-    //1 for EMPTY list, and 2 for a populated list
-    if (myList1 == NULL)
-    {
-        status1 = 0;
-    }
-    else if (myList1->first == NULL)
-    {
-        status1 = 1;   
-    }
-    else
-    {
-        status1 = 2;
-    }
-
-    //setting status2 for myList2 to 0 for NULL list,
-    //1 for EMPTY list, and 2 for a populated list
-    if (myList2 == NULL)
-    {
-        status2 = 0;
-    }
-    else if (myList2->first == NULL)
-    {
-        status2 = 1;
-    }
-    else
-    {
-        status2 = 2;
-    }
-
-    if ((status1 == 2) && (status2 == 2))
-    {
-        //setting tmp to beginning of list 1 and
-        //setting tmp2 to beginning of list 2
-        tmp     = myList1->first;
-        tmp2    = myList2->first;
-        
-        //checking for single node list
-
-        //moving tmp and tmp2 pointers through lists
-        //while tmp and tmp2 aren't NULL
-        while ((tmp != NULL) && (tmp2 != NULL))
-        {
-            //if values in nodes are different
-            if (tmp->info != tmp2->info)
-            {
-                //get current position
-                (*pos)=i;
-
-                //determine which value is larger
-                if (tmp->info > tmp2->info)
-                {
-                    returnable = (CMP_L1_GREATER|CMP_L2_LESS);
+    uc comparvar;
+	int position = 0;
+        if(myList1 == NULL && myList2 == NULL) { // check for null lists
+            comparvar = CMP_L1_NULL|CMP_L2_NULL;
+        } else if(myList1 == NULL && myList2 != NULL) { //  check if one list is null and other is not null
+            if(myList2->first == NULL || myList2->last == NULL) {
+                comparvar = CMP_L1_NULL|CMP_L2_EMPTY;
+            } else {
+                comparvar = CMP_L1_NULL;
+            }
+        } else if(myList1 != NULL && myList2 == NULL) { // check if one list i null and other isn't
+            if(myList1 -> first == NULL || myList1 -> last == NULL) {
+                comparvar = CMP_L2_NULL|CMP_L1_EMPTY;
+            } else {
+                comparvar = CMP_L2_NULL;
+            }
+        } else {
+            if((myList1 -> first == NULL || myList1 -> last == NULL) && (myList2 -> first == NULL || myList2 -> last == NULL)) { // checks if lists are empty
+                comparvar = CMP_L1_EMPTY|CMP_L2_EMPTY;
+            } else if((myList1 -> first == NULL || myList1 -> last == NULL) && (myList2 -> first != NULL && myList2 -> last != NULL)) { // checks if one list is empty and other is
+                comparvar = CMP_L1_EMPTY;
+            } else if((myList1 -> first != NULL && myList1 -> last != NULL) && (myList2 -> first == NULL || myList2 -> last == NULL)) { // checks if one list is empty and other is
+                comparvar = CMP_L2_EMPTY;
+            } else {
+                int list1size = 0, list2size = 0;
+				Node *tmp = NULL;
+				Node *tmp2 = NULL;
+                tmp = myList1 -> first;
+                while(tmp != NULL) { // get size of list 1
+                    list1size = list1size + 1;
+                    tmp = tmp -> after;
                 }
-                if (tmp2->info > tmp->info)
-                {
-                    returnable = (CMP_L1_LESS|CMP_L2_GREATER);
+                tmp2 = myList2 -> first;
+                while(tmp2 != NULL) { // get size of list 2
+                    list2size = list2size +1;
+                    tmp2 = tmp2 -> after;
                 }
-
-                //force end of loop
-                //tmp == NULL;
-                //tmp2 == NULL;
+                if(list1size == list2size) { //  check if both lists are same size
+                    tmp = myList1 -> first;
+                    tmp2 = myList2 -> first;
+                    char isequal = 't';
+					int i;
+                    for(i = 0; i < list1size; i++) { // loop through all list items and check if they are both equal
+                        if(tmp -> info != tmp2 -> info) {
+                            isequal = 'f';
+                            break;
+                        }
+                        tmp = tmp -> after;
+                        tmp2 = tmp2 -> after;
+                    }
+                    if(isequal == 't') {
+                        comparvar = CMP_EQUALITY;
+                        position = list1size;
+                    } else {
+                        if(tmp -> info > tmp2 -> info) { // checks which value is bigger
+                            comparvar = CMP_L1_GREATER|CMP_L2_LESS;
+                        } else {
+                            comparvar = CMP_L1_LESS|CMP_L2_GREATER;
+                        }
+                        position = i + 1;
+                    }
+                } else {
+                    if(list1size > list2size) {// check which list is bigger
+                        tmp = myList1 -> first;
+                        tmp2 = myList2 -> first;
+                    } else {
+                        tmp = myList2 -> first;
+                        tmp2 = myList1 -> first;
+                    }
+                    int positionint = 1;
+                    do {
+                        if(tmp -> info != tmp2 -> info) {
+                            position = positionint;
+                            if(tmp -> info > tmp2 -> info) {
+                                comparvar = CMP_L1_GREATER|CMP_L2_LESS;
+                            } else {
+                                comparvar = CMP_L1_LESS|CMP_L2_GREATER;
+                            }
+                            break;
+                        }
+                        if(tmp2 -> after == NULL) {
+                            position = positionint + 1;
+                            if(list1size > list2size) {
+                                comparvar = CMP_L1_GREATER;
+                            } else {
+                                comparvar = CMP_L2_GREATER;
+                            }
+                            break;
+                        }
+                        tmp = tmp -> after;
+                        tmp2 = tmp2 -> after;
+                        positionint = positionint + 1;
+                    } while(tmp != NULL);
+                }
             }
-            
-            //if myList1 is shorter than return postition
-            //and returnable is assigned list 2 as greater
-            if (tmp == NULL)
-            {
-                (*pos)=i;
-                returnable = (CMP_L2_GREATER);
-            }
-            //if myList2 is shorter than return postition
-            //and returnable is assigned list 1 as greater
-            if (tmp2 == NULL)
-            {   
-                (*pos)=i;
-                returnable = (CMP_L1_GREATER);
-            }
-            
-            tmp = tmp->after;
-            tmp2 = tmp2->after;
-            i++;
-                
         }
-
-        //if position is NULL return position as i
-        if (pos != NULL)
-        {    
-            (*pos)=i;
-        }
-
+    if(pos != NULL) { // check if pointer is null
+        *pos = position;
     }
-    else
-    {
-        //checking for NULL and NULL lists
-        if ((status1 == 0) && (status2 == 0))
-        {
-            (*pos)=i;
-            returnable = (CMP_L1_NULL|CMP_L2_NULL);
-        }
-        //checking for EMPTY and NULL lists
-        if ((status1 == 1) && (status2 == 0))
-        {
-            (*pos)=i;
-            returnable = (CMP_L1_EMPTY|CMP_L2_NULL);
-        }
-        //checking for NULL and EMPTY lists
-        if ((status1 == 0) && (status2 == 1))
-        {
-            (*pos)=i;
-            returnable = (CMP_L1_NULL|CMP_L2_EMPTY);
-        }
-        //checking for EMPTY and EMPTY lists
-        if ((status1 == 1) && (status2 == 1))
-        {
-            (*pos)=i;
-            returnable = (CMP_L1_EMPTY|CMP_L2_EMPTY);
-        }
-
-        //checking for NULL and populated lists
-        if ((status1 == 0) && (status2 == 2))
-        {
-            (*pos)=i;
-            returnable = (CMP_L1_NULL);
-        }
-        //checking for EMPTY and populated lists
-        if ((status1 == 1) && (status2 == 2))
-        {
-            (*pos)=i;
-            returnable = (CMP_L1_EMPTY);
-        }
-        //checking for populated and NULL lists
-        if ((status1 == 2) && (status2 == 0))
-        {
-            (*pos)=i;
-            returnable = (CMP_L2_NULL);
-        }
-        //checking for populated and EMPTY lists
-        if ((status1 == 2) && (status2 == 1))
-        {
-            (*pos)=i;
-            returnable = (CMP_L2_EMPTY);
-        }
-    }
-
-	return(returnable);
+    return(comparvar);
 }
+
+// Author: Dan Shadeck
+// 10/6/2015
+// Data Structures
