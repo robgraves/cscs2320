@@ -20,6 +20,7 @@ List *cplist(List *oldList)
     List *newList = NULL;
     Node *tmp = NULL;
     Node *tmp2 = NULL;
+    int i = 0;
 
     //checking for NULL list
     if (oldList == NULL)
@@ -38,7 +39,10 @@ List *cplist(List *oldList)
             newList->last = NULL;
 
             //setting myList's quantity to 0
-            newList->qty = 0;
+            //newList->qty = 0;      //this is done in mklist, unnecessary here
+            
+            //setting newList's after pointer to NULL
+            //newList->after = NULL;  //this is done in mklist, unnecessary here
         }
         else
         {
@@ -60,9 +64,14 @@ List *cplist(List *oldList)
 
                 //increment qty by 1 each iteration
                 //newList->qty = newList->qty + 1;
+                //i++;
             }
             //assigning newList's last pointer to last created node
             newList->last = tmp2;
+
+            oldList->after = newList;
+
+            //newList->qty=i;
         }
     }
 
