@@ -21,6 +21,38 @@
 //
 code_t mknode(Node **newNode, char info)
 {
-	// to be implemented (please remove this comment upon completion)
-	return(DLN_DEFAULT_FAIL);
+    //variable declaration and initialization
+    code_t result = 0; 
+
+    //checking for Node pointer is NULL
+    if (newNode != NULL)
+    {
+        //checking for Node is NULL
+        if ((*newNode) == NULL)
+        {    
+            //allocate memory for Node
+            (*newNode)=(Node *)malloc(sizeof(Node));
+            //Node's payload.value (VALUE) assigned info
+            (*newNode)->VALUE=info;
+            //Node's after pointer assigned to NULL;
+            (*newNode)->after=NULL;
+            //Node's prior pointer assigned to NULL;
+            (*newNode)->prior=NULL;
+            //setting result to DLN_SUCCESS
+            result = DLN_SUCCESS;
+        }
+        else
+        {
+            //assigning result if Node is already allocated
+            result = DLN_ERROR + DLN_ALREADY_ALLOC;
+        }
+    }
+    else
+    {
+        //if pointer is NULL, assigning result
+        result = DLN_INVALID + DLN_ERROR;
+    }
+
+
+	return(result);
 }
