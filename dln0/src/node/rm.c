@@ -20,6 +20,33 @@
 //
 code_t rmnode(Node **curNode)
 {
-	// to be implemented (please remove this comment upon completion)
-	return(DLN_DEFAULT_FAIL);
+    //variable declaration adn initializations
+    code_t result = 0;
+
+    //check if double pointer is not NULL
+    if (curNode != NULL)
+    {
+        //check if node pointer is NULL
+        if (*curNode != NULL)
+        {
+            //deallocating the node
+            free(*curNode);
+            //setting node pointer to NULL
+            *curNode = NULL;
+            //setting result to NULL and SUCCESS
+            result = DLN_NULL + DLN_SUCCESS;
+        }
+        else
+        {
+            //setting result to Error and NULL
+            result = DLN_ERROR + DLN_NULL;
+        }
+    }
+    else 
+    {
+        //setting result to Invalid and Error
+        result = DLN_INVALID + DLN_ERROR;
+    }
+
+	return(result);
 }
