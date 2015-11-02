@@ -18,6 +18,30 @@
 //
 code_t mklist(List **newList)
 {
-	// your implementation here (please remove this comment when done)
-	return(DLL_DEFAULT_FAIL);
+    //variable declaration and initialization
+    code_t result = 0;
+
+    if (newList == NULL)
+    {
+        result = DLL_INVALID + DLL_ERROR;
+    }
+    else
+    {
+        if (*newList != NULL)
+        {
+            result = DLL_ERROR + DLL_ALREADY_ALLOC;
+        }
+        else
+        {
+            (*newList) = (List *)malloc(sizeof(List));
+            (*newList)->first = NULL;
+            (*newList)->last = NULL;
+
+            result = DLL_EMPTY + DLL_SUCCESS;
+
+        }
+
+    }
+
+	return(result);
 }
