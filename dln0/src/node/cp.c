@@ -32,6 +32,38 @@
 //
 code_t cpnode(Node *oldNode, Node **copiedNode)
 {
-	// to be implemented (please remove this comment upon completion)
-	return(DLN_DEFAULT_FAIL);
+    //variable declaration and initialization
+    code_t result = 0;
+
+    //checking for Node pointer is NULL
+    if (copiedNode == NULL)
+    {
+        result = DLN_INVALID + DLN_ERROR;
+    }
+    else
+    {
+        //checking if Node is NULL
+        if (oldNode == NULL)
+        {
+            result = DLN_ERROR + DLN_NULL;
+        }
+        else
+        {
+            //checking if copied node pointer is not NULL
+            if (*copiedNode != NULL)
+            {
+                result = DLN_ERROR + DLN_ALREADY_ALLOC;
+            }
+            else
+            {
+                //copying the node and its elements
+                result = mknode(copiedNode, oldNode->payload.value);
+                (*copiedNode)->after = oldNode->after;     
+                (*copiedNode)->prior = oldNode->prior;     
+                (*copiedNode)->payload.data = oldNode->payload.data;     
+            }
+        }
+    }
+    
+	return(result);
 }
