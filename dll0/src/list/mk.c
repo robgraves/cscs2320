@@ -21,19 +21,23 @@ code_t mklist(List **newList)
     //variable declaration and initialization
     code_t result = 0;
 
+    //checking if newList is NULL
     if (newList == NULL)
     {
         result = DLL_INVALID + DLL_ERROR;
     }
     else
     {
+        //cehcking if list exists
         if (*newList != NULL)
         {
             result = DLL_ERROR + DLL_ALREADY_ALLOC;
         }
         else
         {
+            //allocating a new list
             (*newList) = (List *)malloc(sizeof(List));
+            //setting first and last pointers to NULL
             (*newList)->first = NULL;
             (*newList)->last = NULL;
 
