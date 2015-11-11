@@ -85,6 +85,8 @@
 //
 code_t  compare(List *myList1, List *myList2, ulli *difference)
 {
-	// your implementation here (please remove this comment when done)
-	return(DLL_DEFAULT_FAIL);
+    //variable initializations and declarations
+    code_t result = 0;
+
+	return(result);
 }

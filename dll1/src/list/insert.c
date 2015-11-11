@@ -24,6 +24,8 @@
 //
 code_t insert(List **myList, Node *place, Node *newNode)
 {
-	// your implementation here (please remove this comment when done)
-	return(DLL_DEFAULT_FAIL);
+    //variable declarations and initializations
+    code_t result = 0;
+
+	return(result);
 }

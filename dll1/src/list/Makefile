@@ -17,7 +17,7 @@ ifneq ($(MAKECMDGOALS),debug)
 	@printf "=======================================\n"
 endif
 
-debug: CFLAGS += -DDEBUG -g
+debug: CC += -DDEBUG -g
 debug: DEBUG = debug
 debug: $(SRC) $(OBJ) lib
 
@@ -32,13 +32,12 @@ endif
 lib:
 	@date +'%Y%m%d%H%M%S' >> /var/public/$(SEMESTER)/$(DESIG)/$(PROJ)/.updates/.metrics/${USER}
 ifneq ($(MAKECMDGOALS),debug)
-	@printf "       %-20s ... " "lib$(LIB).{a,so}"
-	@$(AR) rcs ../../lib/lib$(LIB).a $(OBJ) 2>> ../../errors && $(CC) -shared -o ../../lib/lib$(LIB).so -Wl,--whole-archive ../../lib/lib$(LIB).a -Wl,--no-whole-archive && echo "\033[1;32mSUCCESS\033[0m" || echo "\033[1;31mFAIL\033[0m"
+	@printf "[\033[1;33mAR\033[0m]   %-20s ... " "lib$(LIB).a"
+	@$(AR) rcs ../../lib/lib$(LIB).a $(OBJ) 2>> ../../errors && echo "\033[1;32mSUCCESS\033[0m" || echo "\033[1;31mFAIL\033[0m"
 	@echo
 else
 	$(AR)  rcs ../../lib/lib$(LIB).a $(OBJ)
-	$(CC) -shared -o ../../lib/lib$(LIB).so -Wl,--whole-archive ../../lib/lib$(LIB).a -Wl,--no-whole-archive
 endif
 
 clean:
-	@rm -f .*.sw[op] *.save* *~ *.o $(OBJ) core ../../errors
+	@rm -f .*.sw[op] *.save* *~ core compare.o empty.o obtain.o rm.o sort.o swap.o ../../errors

@@ -32,6 +32,8 @@
 //
 code_t  swapnode(List **myList, Node *posA, Node *posB)
 {
-	// your implementation here (please remove this comment when done)
-	return(DLL_DEFAULT_FAIL);
+    //variable declarations and initializations
+    code_t result = 0;
+
+	return(result);
 }

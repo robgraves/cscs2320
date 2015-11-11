@@ -32,6 +32,8 @@
 //
 code_t  sortlist(List **myList, int mode)
 {
-	// your implementation here (please remove comment once starting)
-    return(DLL_DEFAULT_FAIL);
+    //variable declarations and initializations
+    code_t result = 0;
+
+    return(result);
 }

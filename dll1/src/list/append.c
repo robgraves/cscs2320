@@ -24,6 +24,8 @@
 //
 code_t append(List **myList, Node *place, Node *newNode)
 {
-	// your implementation here (please remove this comment when done)
-	return(DLL_DEFAULT_FAIL);
+    //variables declarations and initialization 
+    code_t result = 0;
+
+	return(result);
 }
