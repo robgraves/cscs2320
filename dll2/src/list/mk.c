@@ -40,6 +40,8 @@ code_t mklist(List **newList)
             //setting first and last pointers to NULL
             (*newList)->first = NULL;
             (*newList)->last = NULL;
+            //added qty to list
+            (*newList)->qty = 0;
 
             result = DLL_EMPTY + DLL_SUCCESS;
 

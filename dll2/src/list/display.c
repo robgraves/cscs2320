@@ -43,6 +43,8 @@
 //
 code_t display(List *myList, int mode)
 {
-	// Your implementation here (remove this comment once started)
-    return(DLL_DEFAULT_FAIL);
+    //variable declarations and initializations
+    code_t result = DLL_SUCCESS;
+
+    return(result);
 }

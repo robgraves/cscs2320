@@ -25,7 +25,45 @@
 code_t append(List **myList, Node *place, Node *newNode)
 {
     //variables declarations and initialization 
-    code_t result = 0;
+    code_t result = DLL_SUCCESS;
+
+    if (myList == NULL)
+    {
+        result = DLL_INVALID + DLL_ERROR;
+    }
+    else
+    {
+        //checking if newNode is NULL
+        if (newNode == NULL)
+        {
+            result = DLN_NULL + DLN_ERROR;
+        }
+        else
+        {
+            //checking for empty list
+            if ((*myList)->first == NULL)
+            {
+                //empty list   
+            }
+            else
+            {
+                //attaching after and prior on appended node
+                newNode->after=place->after;
+                newNode->prior=place;
+
+                //attaching pointers before and after appended node
+                place->after->prior=newNode;
+                place->after=newNode;
+
+                //incrementing qty element in list
+                (*myList)->qty++;
+                //(*myList)->qty=((*myList)->qty + 1);
+
+                //setting result to success code
+                result = DLL_SUCCESS;
+            }
+        }
+    }
 
 	return(result);
 }
