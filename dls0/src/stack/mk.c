@@ -37,6 +37,20 @@
 //
 code_t mkstack(Stack **newStack, ulli size)
 {
-    // to be implemented (remove this comment upon completion)
-    return (DLS_DEFAULT_FAIL);
+    //variable declarations and initialization
+    code_t result = 0;
+
+    if ((*newStack) != NULL)
+    {
+        //something
+        (*newStack) = (Stack *)malloc(sizeof(Stack));
+
+        result = DLS_EMPTY | DLS_SUCCESS | DLL_EMPTY | DLL_SUCCESS;
+    }
+    else
+    {
+        result = DLS_INVALID + DLS_ERROR;
+    }
+
+    return (result);
 }
