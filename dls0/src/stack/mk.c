@@ -39,17 +39,34 @@ code_t mkstack(Stack **newStack, ulli size)
 {
     //variable declarations and initialization
     code_t result = 0;
+    code_t list_result = 0;
 
-    if ((*newStack) != NULL)
+    //checking if newStack pointer is NULL
+    if (newStack != NULL)
     {
-        //something
-        (*newStack) = (Stack *)malloc(sizeof(Stack));
+        //checking if pointer to newStack is NULL
+        if ((*newStack) != NULL)
+        {
+            //error code 
+            result = DLS_ERROR | DLS_CREATE_FAIL;
+        }
+        else
+        {
+        
+            //allocating new stack with allocating list
+            (*newStack) = (Stack *)malloc(sizeof(Stack));
+            (*newStack)->top    = NULL;
+            list_result = mklist(&((*newStack)->data));
+            (*newStack)->size   = size;
 
-        result = DLS_EMPTY | DLS_SUCCESS | DLL_EMPTY | DLL_SUCCESS;
+            //success code
+            result = DLS_EMPTY | DLS_SUCCESS | list_result;         
+        }
     }
     else
     {
-        result = DLS_INVALID + DLS_ERROR;
+        //error code
+        result = DLS_INVALID | DLS_ERROR;
     }
 
     return (result);

@@ -25,6 +25,42 @@
 //
 code_t push(Stack **myStack, Node *newNode)
 {
-	// to be implemented (remove this comment upon completion)
-	return (DLS_DEFAULT_FAIL);
+    //variable declarations and initializations
+    code_t result = 0;
+    
+    if (myStack != NULL)
+    {
+        if ((*myStack) != NULL)
+        {
+            result = DLS_ERROR | DLS_INVALID;
+        }
+        else
+        {
+            if (newNode == NULL)
+            {
+                result = DLS_ERROR | DLN_NULL;
+            }
+            else
+            {
+                if ((*myStack)->top == NULL)
+                {
+                    result = DLS_ERROR | DLN_NULL;    
+                }
+                else
+                {
+                    newNode->after = (*myStack)->top;
+                    (*myStack)->top = newNode;
+
+                    result = DLS_SUCCESS;
+                }
+            }
+        }
+    }
+    else
+    {
+        result = DLS_INVALID | DLS_ERROR;
+    }
+
+
+	return (result);
 }

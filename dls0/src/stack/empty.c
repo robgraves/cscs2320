@@ -23,6 +23,26 @@
 //
 code_t isempty(Stack *myStack)
 {
-	// to be implemented (remove this comment upon completion)
-	return (DLS_DEFAULT_FAIL);
+    //variable declarations and initializations
+    code_t result = 0;
+
+    //checking for NULL stack
+    if (myStack == NULL)
+    {
+        result = DLS_ERROR | DLS_NULL;
+    }
+    else
+    {
+        //cehcking for empty stack
+        if (myStack->top == NULL)
+        {
+            result = DLS_EMPTY | DLS_SUCCESS;
+        }
+        else
+        {
+            result = DLS_OVERFLOW | DLS_SUCCESS;
+        }
+    }
+
+	return (result);
 }

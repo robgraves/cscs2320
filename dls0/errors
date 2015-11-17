@@ -1,0 +1,12 @@
+rm.c: In function 'rmstack':
+rm.c:41:34: warning: passing argument 1 of 'rmlist' from incompatible pointer type
+             list_result = rmlist((*oldStack)->data);
+                                  ^
+In file included from ../../inc/stack.h:9:0,
+                 from rm.c:1:
+../../inc/list.h:14:9: note: expected 'struct List **' but argument is of type 'struct List *'
+ code_t  rmlist  (List **);                  // deallocate empty list
+         ^
+rm.c:31:12: warning: variable 'list_result' set but not used [-Wunused-but-set-variable]
+     code_t list_result = 0;
+            ^

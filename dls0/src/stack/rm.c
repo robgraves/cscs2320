@@ -26,6 +26,37 @@
 //
 code_t rmstack(Stack **oldStack)
 {
-	// to be implemented (remove this comment upon completion)
-	return (DLS_DEFAULT_FAIL);
+    //variable declaration and initializations
+    code_t result = 0;
+    code_t list_result = 0;
+
+    //checking out stuff
+    if (oldStack != NULL)
+    {
+        //checking out more stuff
+        if ((*oldStack) != NULL)
+        {
+            //freeing up list and pointers in oldStack
+            (*oldStack)->top = NULL;
+            list_result = rmlist((*oldStack)->data);
+            (*oldStack)->size = 0;
+            free(*oldStack);
+            (*oldStack) = NULL;
+            result = DLS_NULL | DLS_SUCCESS | DLL_NULL | DLL_SUCCESS;
+            //result = DLS_NULL | DLS_SUCCESS | list_result;
+        }
+        else
+        {
+            //some error message
+            result = DLS_ERROR | DLS_NULL;
+        }
+
+    }
+    else
+    {
+        //some error message
+        result = DLS_INVALID | DLS_ERROR;
+    }
+
+	return (result);
 }

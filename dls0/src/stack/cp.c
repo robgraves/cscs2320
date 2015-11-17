@@ -31,6 +31,10 @@
 //
 code_t cpstack(Stack *curStack, Stack **newStack)
 {
-	// to be implemented (remove this comment upon completion)
-	return (DLS_DEFAULT_FAIL);
+    //variable declarations and initializations
+    code_t result = 0;
+
+    
+
+	return (result);
 }
