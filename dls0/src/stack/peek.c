@@ -28,6 +28,24 @@
 //
 code_t peek(Stack *myStack, Node **peekNode)
 {
-	// to be implemented (remove this comment upon completion)
-	return (DLS_DEFAULT_FAIL);
+    //variable declarations and initializations
+    code_t result = 0;
+
+    if (myStack == NULL)
+    {
+        //do nothing
+    }
+    else
+    {
+        if ((*peekNode) == NULL)
+        {
+            //do nothing
+        }
+        else
+        {
+            cpnode((myStack->top), (&(*peekNode)));
+        }
+    }
+
+	return (result);
 }

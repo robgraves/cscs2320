@@ -1,0 +1,8 @@
+push.c: In function 'push':
+push.c:30:12: warning: variable 'push_result' set but not used [-Wunused-but-set-variable]
+     code_t push_result = 0;
+            ^
+rm.c: In function 'rmstack':
+rm.c:31:12: warning: variable 'list_result' set but not used [-Wunused-but-set-variable]
+     code_t list_result = 0;
+            ^

@@ -27,6 +27,7 @@ code_t push(Stack **myStack, Node *newNode)
 {
     //variable declarations and initializations
     code_t result = 0;
+    code_t push_result = 0;
     
     if (myStack != NULL)
     {
@@ -49,8 +50,10 @@ code_t push(Stack **myStack, Node *newNode)
                 }
                 else
                 {
-                    newNode->after = (*myStack)->top;
-                    (*myStack)->top = newNode;
+                    //newNode->after = (*myStack)->top;
+                    //(*myStack)->top = newNode;
+                    push_result = append(&((*myStack)->data), ((*myStack)->data->last), newNode);
+                    (*myStack)->top = (*myStack)->data->last;
 
                     result = DLS_SUCCESS;
                 }

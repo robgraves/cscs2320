@@ -38,7 +38,7 @@ code_t rmstack(Stack **oldStack)
         {
             //freeing up list and pointers in oldStack
             (*oldStack)->top = NULL;
-            list_result = rmlist((*oldStack)->data);
+            list_result = rmlist(&(*oldStack)->data);
             (*oldStack)->size = 0;
             free(*oldStack);
             (*oldStack) = NULL;
