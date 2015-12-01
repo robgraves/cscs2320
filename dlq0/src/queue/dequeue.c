@@ -31,6 +31,9 @@
 //
 code_t dequeue(Queue **myQueue, Node **newNode)
 {
-	// to be implemented (remove this comment upon completion)
-	return (DLQ_DEFAULT_FAIL);
+    //variable and pointer declarations and initializations
+    code_t result = 0;
+
+	
+	return (result);
 }

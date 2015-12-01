@@ -32,6 +32,8 @@
 //
 code_t purge(Queue **myQueue)
 {
-	// your implementation here (please remove this comment when done)
-	return(DLQ_DEFAULT_FAIL);
+    //variable and pointer declarations and initializations
+    code_t result = 0;
+
+	return(result);
 }
