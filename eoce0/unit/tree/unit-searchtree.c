@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "tree.h"
+#include "support.h"
 
 int main()
 {
@@ -26,9 +27,9 @@ int main()
 
 	fprintf(stdout,         "Test %d: Checking results ...\n", testno++);
 	fprintf(stdout,         " you have: ");
-	showcode(result);
+	lscodes(result);
 	fprintf(stdout,         "should be: ");
-	showcode(DLT_NULL  | DLT_FAIL);
+	lscodes(DLT_NULL  | DLT_ERROR);
     fflush (stdout);
 
     mktree(&myTree, 4);
@@ -45,13 +46,17 @@ int main()
 
 	fprintf(stdout,         "Test %d: Checking results ...\n", testno++);
 	fprintf(stdout,         " you have: ");
-	showcode(result);
+	lscodes(result);
 	fprintf(stdout,         "should be: ");
-	showcode(DLT_EMPTY | DLT_FAIL);
+	lscodes(DLT_EMPTY | DLT_ERROR);
     fflush (stdout);
 
 	for (i = 0; i < 9; i++)
-		addnode(&myTree, mknode(data[i]));
+	{
+		tmp                           = NULL;
+		mknode(&tmp, data[i]);
+		addnode(&myTree, tmp);
+	}
 
 	for (i = 0; i < 10; i++)
 	{
@@ -66,7 +71,7 @@ int main()
 		if (tmp                      == NULL)
 			fprintf(stdout, " you have: NULL\n");
 		else
-			fprintf(stdout, " you have: %hhd\n", tmp -> value);
+			fprintf(stdout, " you have: %hhd\n", tmp -> VALUE);
 
 		if ((data[i]                 != 2) &&
 			(data[i]                 != 33))
@@ -88,16 +93,16 @@ int main()
 
 		fprintf(stdout,     "Test %d: Checking results ...\n", testno++);
 		fprintf(stdout,     " you have: ");
-		showcode(result);
+		lscodes(result);
 
 		fprintf(stdout,     "should be: ");
 		if ((data[i]                  == 2) ||
 			(data[i]                  == 33))
 		{
-			showcode(DLT_EMPTY);
+			lscodes(DLT_EMPTY);
 		}
 		else
-			showcode(DLT_SUCCESS);
+			lscodes(DLT_SUCCESS);
 		fflush (stdout);
 	}
 

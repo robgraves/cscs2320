@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "tree.h"
+#include "support.h"
 
 int main()
 {
@@ -14,9 +15,9 @@ int main()
     fprintf(stdout,     "Test %d: NULL test ...\n", testno++);
     result                   = mktree(NULL, 15);
 	fprintf(stdout,     " you have: ");
-	showcode(result);
+	lscodes(result);
 	fprintf(stdout,     "should be: ");
-	showcode(DLT_FAIL | DLT_NULL);
+	lscodes(DLT_ERROR | DLT_NULL);
 	fprintf(stdout,     "\n");
 	fflush (stdout);
 
@@ -32,9 +33,9 @@ int main()
 
 	fprintf(stdout,     "Test %d: Checking results ...\n", testno++);
 	fprintf(stdout,     " you have: ");
-	showcode(result);
+	lscodes(result);
 	fprintf(stdout,     "should be: ");
-	showcode(DLT_SUCCESS | DLT_EMPTY);
+	lscodes(DLT_SUCCESS | DLT_EMPTY);
 	fprintf(stdout,     "\n");
 	fflush (stdout);
 
@@ -68,9 +69,9 @@ int main()
 
 	fprintf(stdout,     "Test %d: Checking results ...\n", testno++);
 	fprintf(stdout,     " you have: ");
-	showcode(result);
+	lscodes(result);
 	fprintf(stdout,     "should be: ");
-	showcode(DLT_FAIL | DLT_NULL | DLT_CREATE_FAIL);
+	lscodes(DLT_ERROR | DLT_NULL | DLT_CREATE_FAIL);
 	fprintf(stdout,     "\n");
 	fflush (stdout);
 

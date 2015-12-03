@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "tree.h"
+#include "support.h"
 
 int main()
 {
@@ -16,7 +17,9 @@ int main()
     fprintf(stdout,     "==========================================\n");
 
     fprintf(stdout,     "Test %d: Adding %hhd to NULL tree ...\n", testno++, data[i]);
-    result                           = addnode(&myTree, mknode(data[i]));
+	tmp                              = NULL;
+	mknode(&tmp, data[i]);
+    result                           = addnode(&myTree, tmp);
     if (myTree                      == NULL)
         fprintf(stdout, " you have: NULL\n");
     else
@@ -27,15 +30,17 @@ int main()
 
 	fprintf(stdout,     "Test %d: Checking results ...\n", testno++);
 	fprintf(stdout,     " you have: ");
-	showcode(result);
+	lscodes(result);
 	fprintf(stdout,     "should be: ");
-	showcode(DLT_NULL | DLT_FAIL);
+	lscodes(DLT_NULL | DLT_ERROR);
     fflush (stdout);
 
     mktree(&myTree, 4);
 
     fprintf(stdout, "Test %d: Adding %hhd to empty tree ...\n", testno++, data[i]);
-    result                           = addnode(&myTree, mknode(data[i]));
+	tmp                              = NULL;
+	mknode(&tmp, data[i]);
+    result                           = addnode(&myTree, tmp);
     if (myTree                      == NULL)
         fprintf(stdout, " you have: NULL\n");
     else
@@ -46,18 +51,18 @@ int main()
 
 	fprintf(stdout,     "Test %d: Checking results ...\n", testno++);
 	fprintf(stdout,     " you have: ");
-	showcode(result);
+	lscodes(result);
 	fprintf(stdout,     "should be: ");
-	showcode(DLT_SUCCESS);
+	lscodes(DLT_SUCCESS);
     fflush (stdout);
 
     fprintf(stdout, "Test %d: Checking root ...\n", testno++);
     if (myTree -> root              == NULL)
         fprintf(stdout, " you have: NULL\n");
-    else if (myTree -> root ->value == data[i])
+    else if (myTree -> root ->VALUE == data[i])
         fprintf(stdout, " you have: %hhd\n",   data[i]);
     else
-        fprintf(stdout, " you have: %hhd\n",   myTree -> root -> value);
+        fprintf(stdout, " you have: %hhd\n",   myTree -> root -> VALUE);
 
     fprintf(stdout,     "should be: %hhd\n\n", data[i]); 
     fflush (stdout);
@@ -66,7 +71,9 @@ int main()
     {
         // adding a new node to the tree
         fprintf(stdout,     "Test %d: Adding %hhd to tree ...\n", testno++, data[i]);
-		result                       = addnode(&myTree, mknode(data[i]));
+		tmp                          = NULL;
+		mknode(&tmp, data[i]);
+		result                       = addnode(&myTree, tmp);
 
         switch (i)
         {
@@ -121,7 +128,7 @@ int main()
             fprintf(stdout, " you have: exceeded tree height\n");
         }
         else
-            fprintf(stdout, " you have: %hhd\n", tmp -> value);
+            fprintf(stdout, " you have: %hhd\n", tmp -> VALUE);
 
         if (nothing                 == 1)
             fprintf(stdout, "should be: exceeded tree height\n\n"); 
@@ -131,32 +138,32 @@ int main()
 
 		fprintf(stdout,     "Test %d: Checking results ...\n", testno++);
 		fprintf(stdout,     " you have: ");
-		showcode(result);
+		lscodes(result);
 
 		fprintf(stdout,     "should be: ");
         if (nothing                 == 1)
-			showcode(DLT_MAX | DLT_FAIL);
+			lscodes(DLT_MAX | DLT_ERROR);
 		else
-			showcode(DLT_SUCCESS);
+			lscodes(DLT_SUCCESS);
 		fflush (stdout);
     }
 
     tmp                              = myTree -> root;
     fprintf(stdout, "Test %d: Checking tree integrity ...\n", testno++);
-    if (myTree      -> root ->value == data[0])
+    if (myTree      -> root ->VALUE == data[0])
         fprintf(stdout, " you have: OK (%hhd)\n", data[0]);
     else
-        fprintf(stdout, " you have: %hhd\n", myTree -> root -> value);
+        fprintf(stdout, " you have: %hhd\n", myTree -> root -> VALUE);
 
     fprintf(stdout,     "should be: OK (%hhd)\n\n", data[0]); 
     fflush (stdout);
 
     tmp                              = myTree -> root -> after;
     fprintf(stdout, "Test %d: Checking tree integrity ...\n", testno++);
-    if (tmp         -> value        == data[2])
+    if (tmp         -> VALUE        == data[2])
         fprintf(stdout, " you have: OK (%hhd)\n", data[2]);
     else
-        fprintf(stdout, " you have: %hhd\n", tmp -> value);
+        fprintf(stdout, " you have: %hhd\n", tmp -> VALUE);
 
     fprintf(stdout,     "should be: OK (%hhd)\n\n", data[2]); 
     fflush (stdout);
@@ -175,17 +182,17 @@ int main()
 
     tmp                              = myTree -> root -> prior;
     fprintf(stdout, "Test %d: Checking tree integrity ...\n", testno++);
-    if (tmp         -> value        == data[1])
+    if (tmp         -> VALUE        == data[1])
         fprintf(stdout, " you have: OK (%hhd)\n", data[1]);
     else
-        fprintf(stdout, " you have: %hhd\n", tmp -> value);
+        fprintf(stdout, " you have: %hhd\n", tmp -> VALUE);
 
     fprintf(stdout,     "should be: OK (%hhd)\n\n", data[1]); 
     fflush (stdout);
 
     fprintf(stdout, "Test %d: Checking tree integrity ...\n", testno++);
-    if ((tmp        -> after->value == 11) &&
-        (tmp        -> prior->value == 7))
+    if ((tmp        -> after->VALUE == 11) &&
+        (tmp        -> prior->VALUE == 7))
     {
         fprintf(stdout, " you have: all connections OK\n");
     }
@@ -197,10 +204,10 @@ int main()
 
     tmp                             = myTree -> root -> prior -> after;
     fprintf(stdout, "Test %d: Checking tree integrity ...\n", testno++);
-    if (tmp         -> value        == data[3])
+    if (tmp         -> VALUE        == data[3])
         fprintf(stdout, " you have: OK (%hhd)\n", data[3]);
     else
-        fprintf(stdout, " you have: %hhd\n", tmp -> value);
+        fprintf(stdout, " you have: %hhd\n", tmp -> VALUE);
 
     fprintf(stdout,     "should be: OK (%hhd)\n\n", data[3]); 
     fflush (stdout);
@@ -219,17 +226,17 @@ int main()
 
     tmp                              = myTree -> root -> prior -> prior;
     fprintf(stdout, "Test %d: Checking tree integrity ...\n", testno++);
-    if (tmp         -> value        == data[4])
+    if (tmp         -> VALUE        == data[4])
         fprintf(stdout, " you have: OK (%hhd)\n", data[4]);
     else
-        fprintf(stdout, " you have: %hhd\n", tmp -> value);
+        fprintf(stdout, " you have: %hhd\n", tmp -> VALUE);
 
     fprintf(stdout,     "should be: OK (%hhd)\n\n", data[4]); 
     fflush (stdout);
 
     fprintf(stdout, "Test %d: Checking tree integrity ...\n", testno++);
-    if ((tmp        -> after->value == 8) &&
-        (tmp        -> prior->value == 6))
+    if ((tmp        -> after->VALUE == 8) &&
+        (tmp        -> prior->VALUE == 6))
     {
         fprintf(stdout, " you have: all connections OK\n");
     }
@@ -241,17 +248,17 @@ int main()
 
     tmp                              = myTree -> root -> prior -> prior -> prior;
     fprintf(stdout, "Test %d: Checking tree integrity ...\n", testno++);
-    if (tmp         -> value        == data[5])
+    if (tmp         -> VALUE        == data[5])
         fprintf(stdout, " you have: OK (%hhd)\n", data[5]);
     else
-        fprintf(stdout, " you have: %hhd\n", tmp -> value);
+        fprintf(stdout, " you have: %hhd\n", tmp -> VALUE);
 
     fprintf(stdout,     "should be: OK (%hhd)\n\n", data[5]); 
     fflush (stdout);
 
     fprintf(stdout, "Test %d: Checking tree integrity ...\n", testno++);
     if ((tmp        -> after        == NULL) &&
-        (tmp        -> prior->value == 4))
+        (tmp        -> prior->VALUE == 4))
     {
         fprintf(stdout, " you have: all connections OK\n");
     }
@@ -263,10 +270,10 @@ int main()
 
     tmp                              = myTree -> root -> prior -> prior -> prior -> prior;
     fprintf(stdout, "Test %d: Checking tree integrity ...\n", testno++);
-    if (tmp         -> value        == data[6])
+    if (tmp         -> VALUE        == data[6])
         fprintf(stdout, " you have: OK (%hhd)\n", data[6]);
     else
-        fprintf(stdout, " you have: %hhd\n", tmp -> value);
+        fprintf(stdout, " you have: %hhd\n", tmp -> VALUE);
 
     fprintf(stdout,     "should be: OK (%hhd)\n\n", data[6]); 
     fflush (stdout);
@@ -285,10 +292,10 @@ int main()
 
     tmp                              = myTree -> root -> prior -> prior -> after;
     fprintf(stdout, "Test %d: Checking tree integrity ...\n", testno++);
-    if (tmp         -> value        == data[8])
+    if (tmp         -> VALUE        == data[8])
         fprintf(stdout, " you have: OK (%hhd)\n", data[8]);
     else
-        fprintf(stdout, " you have: %hhd\n", tmp -> value);
+        fprintf(stdout, " you have: %hhd\n", tmp -> VALUE);
 
     fprintf(stdout,     "should be: OK (%hhd)\n\n", data[8]); 
     fflush (stdout);

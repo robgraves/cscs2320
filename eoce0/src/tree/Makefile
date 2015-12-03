@@ -41,4 +41,4 @@ else
 endif
 
 clean:
-	@rm -f .*.sw[op] *.save* *~ *.o $(OBJ) core ../../errors
+	@rm -f .*.sw[op] *.save* *~ addnode.o traverse_?.o grab.o cp.o rm.o search.o core ../../errors

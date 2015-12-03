@@ -1,11 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "tree.h"
+#include "support.h"
 
 int main()
 {
     Tree   *myTree                    = NULL;
     List   *tmpList                   = NULL;
+	Node   *tmp                       = NULL;
     char    data[]                    = { 11, 9, 13, 11, 7, 6, 4, 2, 8 };
     int     testno                    = 0;
     int     i                         = 0;
@@ -64,9 +66,9 @@ int main()
 
             fprintf(stdout,     "Test %d: Checking results ...\n", testno++);
             fprintf(stdout,     " you have: ");
-            showcode(result);
+            lscodes(result);
             fprintf(stdout,     "should be: ");
-            showcode(DLT_FAIL | DLT_NULL);
+            lscodes(DLT_ERROR | DLT_NULL);
             fprintf(stdout,     "\n");
             fflush (stdout);
         }
@@ -108,15 +110,15 @@ int main()
 
             fprintf(stdout,     "Test %d: Checking results ...\n", testno++);
             fprintf(stdout,     " you have: ");
-            showcode(result);
+            lscodes(result);
 
             fprintf(stdout,     "should be: ");
             if ((i == 0) && (j != POSTORDER+1))
-                showcode(DLT_EMPTY|DLT_SUCCESS|DLL_EMPTY);
+                lscodes(DLT_EMPTY|DLT_SUCCESS|DLL_EMPTY);
             else if (j == POSTORDER+1)
-                showcode(DLT_FAIL|DLT_EMPTY);
+                lscodes(DLT_ERROR|DLT_EMPTY);
             else
-                showcode(DLT_EMPTY|DLT_FAIL|DLL_FAIL|DLL_ALREADY_ALLOC);
+                lscodes(DLT_EMPTY|DLT_ERROR|DLL_ERROR|DLL_ALREADY_ALLOC);
             fprintf(stdout,     "\n");
             fflush (stdout);
 
@@ -127,7 +129,11 @@ int main()
 //    result                            = mktree(&myTree, 4);
 
     for (j = 0; j < 9; j++)
-        result                        = addnode(&myTree, mknode(data[j]));
+	{
+		tmp                           = NULL;
+		mknode(&tmp, data[j]);
+        result                        = addnode(&myTree, tmp);
+	}
 
     for (i     = 0;         i <  2;             i++)
     {
@@ -166,15 +172,15 @@ int main()
             }
 
             fprintf(stdout,     " you have: ");
-            showcode(result);
+            lscodes(result);
 
             fprintf(stdout,     "should be: ");
             if ((i == 0) && (j != POSTORDER + 1))
-                showcode(DLT_SUCCESS);
+                lscodes(DLT_SUCCESS);
             else if (j == POSTORDER+1)
-                showcode(DLT_FAIL);
+                lscodes(DLT_ERROR);
             else
-                showcode(DLT_FAIL|DLL_ALREADY_ALLOC|DLL_FAIL);
+                lscodes(DLT_ERROR|DLL_ALREADY_ALLOC|DLL_ERROR);
             fprintf(stdout,     "\n");
 
             fflush (stdout);

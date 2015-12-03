@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "tree.h"
+#include "support.h"
 
 int main()
 {
@@ -49,7 +50,9 @@ int main()
 		{
 			if (myTree -> root  == NULL)
 			{
-				addnode(&myTree, mknode(data[0]));
+				tmp              = NULL;
+				mknode(&tmp, data[0]);
+				addnode(&myTree, tmp);
 				tmp              = myTree -> root;
 			}
 		}
@@ -63,7 +66,11 @@ int main()
 			if (myTree -> root  == NULL)
 			{
 				for (k = 0; k < 9; k++)
-					addnode(&myTree, mknode(data[k]));
+				{
+					tmp              = NULL;
+					mknode(&tmp, data[k]);
+					addnode(&myTree, tmp);
+				}
 
 				tmp              = myTree -> root;
 			}
@@ -125,18 +132,18 @@ int main()
 
 		fprintf(stdout, "Test %d: Checking results ...\n", testno++);
 		fprintf(stdout, " you have: ");
-		showcode(result);
+		lscodes(result);
 
 		fprintf(stdout, "should be: ");
 
 		if (variation == 0)
-			showcode(DLT_FAIL | DLT_NULL);
+			lscodes(DLT_ERROR | DLT_NULL);
 		else if (variation == 1)
-			showcode(DLT_FAIL | DLT_EMPTY);
+			lscodes(DLT_ERROR | DLT_EMPTY);
 		else if (variation == 2)
-			showcode(DLT_SUCCESS | DLT_EMPTY);
+			lscodes(DLT_SUCCESS | DLT_EMPTY);
 		else if (variation >  2)
-			showcode(DLT_SUCCESS);
+			lscodes(DLT_SUCCESS);
 
 		fprintf(stdout, "\n");
 		fflush (stdout);

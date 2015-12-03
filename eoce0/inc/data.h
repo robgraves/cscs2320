@@ -43,6 +43,8 @@ typedef struct stack           Stack;  // because we deserve nice things
 typedef struct queue           Queue;  // because we deserve nice things
 typedef struct tree            Tree;   // because we deserve nice things
 typedef unsigned long long int code_t; // status code data type
+typedef unsigned char          uc;
+typedef   signed char          sc;
 typedef unsigned long long int ulli;
 typedef   signed long long int slli;
 

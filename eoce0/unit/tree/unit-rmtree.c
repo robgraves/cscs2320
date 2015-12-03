@@ -1,10 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "tree.h"
+#include "support.h"
 
 int main()
 {
 	Tree   *myTree           = NULL;
+	Node   *tmp              = NULL;
     int     testno           = 0;
 	int     i                = 0;
 	code_t  result           = 0;
@@ -24,9 +26,9 @@ int main()
 
 	fprintf(stdout,     "Test %d: Checking results ...\n", testno++);
 	fprintf(stdout,     " you have: ");
-	showcode(result);
+	lscodes(result);
 	fprintf(stdout,     "should be: ");
-	showcode(DLT_FAIL | DLT_NULL);
+	lscodes(DLT_ERROR | DLT_NULL);
 	fprintf(stdout,     "\n");
 
     fflush (stdout);
@@ -44,9 +46,9 @@ int main()
 
 	fprintf(stdout,     "Test %d: Checking results ...\n", testno++);
 	fprintf(stdout,     " you have: ");
-	showcode(result);
+	lscodes(result);
 	fprintf(stdout,     "should be: ");
-	showcode(DLT_FAIL | DLT_SUCCESS);
+	lscodes(DLT_ERROR | DLT_SUCCESS);
 	fprintf(stdout,     "\n");
     fflush (stdout);
 
@@ -54,7 +56,11 @@ int main()
     mktree(&myTree, 17);
 
 	for (i = 0; i < 9; i++)
-		addnode(&myTree, mknode(i));
+	{
+		tmp                  = NULL;
+		mknode(&tmp, i);
+		addnode(&myTree, tmp);
+	}
 
     result                   = rmtree(&myTree);
     if (myTree              == NULL)
@@ -67,9 +73,9 @@ int main()
 
 	fprintf(stdout,     "Test %d: Checking results ...\n", testno++);
 	fprintf(stdout,     " you have: ");
-	showcode(result);
+	lscodes(result);
 	fprintf(stdout,     "should be: ");
-	showcode(DLT_FAIL | DLT_SUCCESS);
+	lscodes(DLT_ERROR | DLT_SUCCESS);
 	fprintf(stdout,     "\n");
     fflush (stdout);
 
