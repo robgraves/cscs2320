@@ -30,10 +30,10 @@ endif
 install:
 ifneq ($(MAKECMDGOALS),debug)
 	@echo -n "[\033[1;33mCP\033[0m] Copying to \033[1;35m$(PROJECT)/bin/\033[0m   ... "
-	@/bin/cp -f *.sh $(BIN) $(BINPATH)/ 2>> ../../errors && echo "\033[1;32mSUCCESS\033[0m" || echo "\033[1;31mFAIL\033[0m"
+	@/bin/cp -f $(BIN) $(BINPATH)/ 2>> ../../errors && echo "\033[1;32mSUCCESS\033[0m" || echo "\033[1;31mFAIL\033[0m"
 	@echo
 else
-	@/bin/cp -f *.sh $(BIN) $(BINPATH)/
+	@/bin/cp -f $(BIN) $(BINPATH)/
 endif
 
 clean:
