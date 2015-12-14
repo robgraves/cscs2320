@@ -3,10 +3,10 @@
 
 int main()
 {
-    FILE *file  = NULL;
-    //tmp *node   = NULL;
-    //list *list  = NULL;
-    int num     = 0;
+    FILE *file      = NULL;
+    Node *tmp       = NULL;
+    List *MyList    = NULL;
+    int num         = 0;
 
     if ((file = fopen("status.flat", "r"))!=NULL)
     {
