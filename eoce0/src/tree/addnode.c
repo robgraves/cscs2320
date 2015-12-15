@@ -28,15 +28,34 @@ code_t addnode(Tree **myTree, Node *newNode)
     code_t result = 0;
     uc max = 0;        //max height of tree, 0 indicared unbounded tree
 
-    max = (*myTree)->max_height;
+    //max = (*myTree)->max_height;
 
     if ((*myTree) == NULL)
     {
-        (*myTree)->root = newNode;       
+        result = DLT_NULL;
     }
     else
     {
-        
+        if ((*myTree)->root == NULL)
+        {
+            (*myTree)->root = newNode;       
+            result = DLT_SUCCESS;
+        }
+        //max = (*myTree)->max_height;
+        if (max >= 1)
+        {
+            if (newNode->VALUE <= (*myTree)->root)
+            {
+                (*myTree)->root->prior = newNode;       
+                result = DLT_SUCCESS;
+            }
+            else
+            {
+                (*myTree)->root->after = newNode;
+                result = DLT_SUCCESS;
+            }
+        }
+    
     }
 
 	return (result);

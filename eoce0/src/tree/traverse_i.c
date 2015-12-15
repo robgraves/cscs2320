@@ -38,7 +38,7 @@
 //              you are to have only ONE return statement for this
 //              entire function. Change the existing one as needed.
 //
-code_t traverse_s(Tree *myTree, List **result, uc mode)
+code_t traverse_i(Tree *myTree, List **result, uc mode)
 {
 	// your implementation here (please remove this comment when done)
 	return(DLT_DEFAULT_FAIL);
