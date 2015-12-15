@@ -39,6 +39,8 @@
 //
 code_t traverse_s(Tree *myTree, List **result, uc mode)
 {
-	// your implementation here (please remove this comment when done)
-	return(DLT_DEFAULT_FAIL);
+    //variable declarations and initializations
+    code_t result = 0;
+
+	return(result);
 }
