@@ -24,6 +24,20 @@
 //
 code_t addnode(Tree **myTree, Node *newNode)
 {
-	// to be implemented (remove this comment upon completion)
-	return (DLT_DEFAULT_FAIL);
+    //variable declarations and initializations
+    code_t result = 0;
+    uc max = 0;        //max height of tree, 0 indicared unbounded tree
+
+    max = (*myTree)->max_height;
+
+    if ((*myTree) == NULL)
+    {
+        (*myTree)->root = newNode;       
+    }
+    else
+    {
+        
+    }
+
+	return (result);
 }
