@@ -27,12 +27,53 @@ code_t addnode(Tree **myTree, Node *newNode)
     //variable declarations and initializations
     code_t result = 0;
     uc max = 0;        //max height of tree, 0 indicared unbounded tree
+    Node *tmp = NULL;
 
     //max = (*myTree)->max_height;
 
+    if (myTree == NULL)
+    {
+        result = DLT_ERROR;
+    }
+    else
+    {
+        if ((*myTree) == NULL)
+        {
+            result = DLT_ERROR | DLT_NULL;
+        }
+        else
+        {
+            if ((*myTree)->root == NULL)
+            {
+                (*myTree)->root = newNode;       
+                result = DLT_SUCCESS;
+                tmp = (*myTree)->root;
+            }
+        }
+    }
+
+    if (tmp == NULL)
+    {
+        //(*myTree)->root = newNode;
+    }
+    else
+    {
+        if (newNode->VALUE <= tmp->VALUE)
+        {
+            result = addnode((*myTree), newNode);
+            result = DLT_SUCCESS;
+        }
+        else
+        {
+            result = addnode((*myTree), newNode);
+            result = DLT_SUCCESS;
+        }
+    }
+
+    /*
     if ((*myTree) == NULL)
     {
-        result = DLT_NULL;
+        result = DLT_ERROR | DLT_NULL;
     }
     else
     {
@@ -41,10 +82,10 @@ code_t addnode(Tree **myTree, Node *newNode)
             (*myTree)->root = newNode;       
             result = DLT_SUCCESS;
         }
-        //max = (*myTree)->max_height;
+        max = (*myTree)->max_height;
         if (max >= 1)
         {
-            if (newNode->VALUE <= (*myTree)->root)
+            if (newNode->VALUE <= (*myTree)->root->VALUE) //added VALUE
             {
                 (*myTree)->root->prior = newNode;       
                 result = DLT_SUCCESS;
@@ -55,8 +96,59 @@ code_t addnode(Tree **myTree, Node *newNode)
                 result = DLT_SUCCESS;
             }
         }
+        if (max >= 2)
+        {
+            if (newNode->VALUE > (*myTree)->root->VALUE)  //added VALUE
+            {
+                (*myTree)->root->after = newNode;       
+                result = DLT_SUCCESS;
+            }
+            else
+            {
+                if (newNode->VALUE <= (*myTree)->root->prior->VALUE) //added VALUE
+                {
+                    (*myTree)->root->prior->prior = newNode;
+                    result = DLT_SUCCESS;
+                }
+                else
+                {
+                    (*myTree)->root->prior->after = newNode;
+                    result = DLT_SUCCESS;
+                }
+            }
+        }
+        if (max >= 3)
+        {
+            if (newNode->VALUE <= (*myTree)->root->VALUE)  //added VALUE
+            {
+                if (newNode->VALUE <= (*myTree)->root->prior->VALUE)
+                {
+                    (*myTree)->root->prior->prior = newNode;       
+                    result = DLT_SUCCESS;
+                }
+                else
+                {
+                    (*myTree)->root->prior->after = newNode;
+                    result = DLT_SUCCESS;
+                }
+            }
+            else
+            {
+                if (newNode->VALUE > (*myTree)->root->prior->VALUE) //added VALUE
+                {
+                    (*myTree)->root->prior->after = newNode;
+                    result = DLT_SUCCESS;
+                }
+                else
+                {
+                    (*myTree)->root->prior->after = newNode;
+                    result = DLT_SUCCESS;
+                }
+            }
+        }
     
     }
+    */
 
 	return (result);
 }
