@@ -16,14 +16,14 @@ int main()
 
     for (i = 1; i < 96; i+= 8)
     {
-		myList -> insert(myList -> getStart(), new SinglyLinkedNode(i));
+		myList -> insert(myList -> getFirst(), new SinglyLinkedNode(i));
 
         fprintf(stdout, "[%d]: ", i);
-        tmp = myList -> getStart();
+        tmp = myList -> getFirst();
         while (tmp != NULL)
         {
             fprintf(stdout, "%d -> ", tmp -> getValue());
-            tmp = tmp -> getNext();
+            tmp = tmp -> getAfter();
         }
         fprintf(stdout, "NULL (quantity is %d)\n", myList -> getQuantity());
     }
@@ -33,26 +33,26 @@ int main()
 
 	// If obtain() isn't implemented/working, this will result in an infinite loop!
 	fprintf(stdout, "Clearing myList manually (needs a working obtain() ...\n");
-	while (myList -> getStart() != NULL)
+	while (myList -> getFirst() != NULL)
 	{
-		delete myList -> obtain(myList -> getStart());
+		delete myList -> obtain(myList -> getFirst());
 
-        tmp = myList -> getStart();
+        tmp = myList -> getFirst();
         while (tmp != NULL)
         {
             fprintf(stdout, "%d -> ", tmp -> getValue());
-            tmp = tmp -> getNext();
+            tmp = tmp -> getAfter();
         }
         fprintf(stdout, "NULL (quantity is %d)\n\n", myList -> getQuantity());
 	}
 	delete myList;
 
 	fprintf(stdout, "Displaying cpList (now that myList is cleared) ... \n");
-	tmp = cpList -> getStart();
+	tmp = cpList -> getFirst();
 	while (tmp != NULL)
 	{
 		fprintf(stdout, "%d -> ", tmp -> getValue());
-		tmp = tmp -> getNext();
+		tmp = tmp -> getAfter();
 	}
 	fprintf(stdout, "NULL (quantity is %d)\n\n", cpList -> getQuantity());
 

@@ -12,23 +12,23 @@ int main()
 
     for (i = 1; i < 96; i+= 8)
     {
-		myList -> insert(myList -> getStart(), new DoublyLinkedNode(i));
+		myList -> insert(myList -> getFirst(), new DoublyLinkedNode(i));
 
         fprintf(stdout, "Forward: ");
-        tmp = myList -> getStart();
+        tmp = myList -> getFirst();
         while (tmp != NULL)
         {
             fprintf(stdout, "%d -> ", tmp -> getValue());
-            tmp = tmp -> getNext();
+            tmp = tmp -> getAfter();
         }
         fprintf(stdout, "NULL (quantity is %d)\n", myList -> getQuantity());
 
         fprintf(stdout, "Reverse: ");
-        tmp = myList -> getEnd();
+        tmp = myList -> getLast();
         while (tmp != NULL)
         {
             fprintf(stdout, "%d -> ", tmp -> getValue());
-            tmp = tmp -> getPrev();
+            tmp = tmp -> getPrior();
         }
         fprintf(stdout, "NULL (quantity is %d)\n\n", myList -> getQuantity());
     }

@@ -19,8 +19,8 @@ int main()
 		}
 		else
 		{
-			tail -> setNext(new SinglyLinkedNode(i));
-			tail  = tail -> getNext();
+			tail -> setAfter(new SinglyLinkedNode(i));
+			tail  = tail -> getAfter();
 		}
 
 		fprintf(stdout, "[%d] ", i);
@@ -28,7 +28,7 @@ int main()
 		while (tmp != NULL)
 		{
 			fprintf(stdout, "%d -> ", tmp -> getValue());
-			tmp = tmp -> getNext();
+			tmp = tmp -> getAfter();
 		}
 		fprintf(stdout, "NULL\n");
 	}
@@ -50,12 +50,12 @@ int main()
 		while (tmp != NULL)
 		{
 			fprintf(stdout, "%d -> ", tmp -> getValue());
-			tmp = tmp -> getNext();
+			tmp = tmp -> getAfter();
 		}
 		fprintf(stdout, "NULL\n");
 
 		tmp = head;
-		head = head -> getNext();
+		head = head -> getAfter();
 
 		delete tmp;
 	}

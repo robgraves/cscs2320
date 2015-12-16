@@ -19,9 +19,9 @@ int main()
 		}
 		else
 		{
-			tail -> setNext(new DoublyLinkedNode(i));
-			tail -> getNext() -> setPrev(tail);
-			tail  = tail -> getNext();
+			tail -> setAfter(new DoublyLinkedNode(i));
+			tail -> getAfter() -> setPrior(tail);
+			tail  = tail -> getAfter();
 		}
 
 		fprintf(stdout, "Forward: ");
@@ -29,7 +29,7 @@ int main()
 		while (tmp != NULL)
 		{
 			fprintf(stdout, "%d -> ", tmp -> getValue());
-			tmp = tmp -> getNext();
+			tmp = tmp -> getAfter();
 		}
 		fprintf(stdout, "NULL\n");
 
@@ -38,7 +38,7 @@ int main()
 		while (tmp != NULL)
 		{
 			fprintf(stdout, "%d -> ", tmp -> getValue());
-			tmp = tmp -> getPrev();
+			tmp = tmp -> getPrior();
 		}
 		fprintf(stdout, "NULL\n\n");
 	}
@@ -60,12 +60,12 @@ int main()
 		while (tmp != NULL)
 		{
 			fprintf(stdout, "%d -> ", tmp -> getValue());
-			tmp = tmp -> getPrev();
+			tmp = tmp -> getPrior();
 		}
 		fprintf(stdout, "NULL\n");
 
 		tmp = tail;
-		tail = tail -> getPrev();
+		tail = tail -> getPrior();
 
 		delete tmp;
 	}
