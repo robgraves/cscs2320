@@ -26,11 +26,11 @@ int main()
 	{
 		for (i     = 0;         i <  2;             i++)
 		{
-			if (i                            == 1)
-				mklist(&tmpList);
-
 			for (j = INORDER;   j <= POSTORDER + 1; j++)
 			{
+				if (i                            == 1)
+					mklist(&tmpList);
+
 				fprintf(stdout,     "Test %d: ", testno++);
 				if (k                        == 0)
 				{
@@ -98,11 +98,11 @@ int main()
 	{
 		for (i     = 0;         i <  2;             i++)
 		{
-			if (i                            == 1)
-				mklist(&tmpList);
-
 			for (j = INORDER;   j <= POSTORDER + 1; j++)
 			{
+				if (i                            == 1)
+					mklist(&tmpList);
+
 				fprintf(stdout,     "Test %d: ", testno++);
 				if (k                        == 0)
 				{
@@ -134,7 +134,7 @@ int main()
 				display(tmpList, 0);
 
 				if (j                       == POSTORDER + 1)
-					fprintf(stdout, "should be: NULL\n\n"); 
+					fprintf(stdout, "should be: (NULL)\n\n"); 
 				else
 					fprintf(stdout, "should be: -> NULL\n\n"); 
 
@@ -172,11 +172,11 @@ int main()
 	{
 		for (i     = 0;         i <  2;             i++)
 		{
-			if (i                            == 1)
-				mklist(&tmpList);
-
 			for (j = INORDER;   j <= POSTORDER + 1; j++)
 			{
+				if (i                            == 1)
+					mklist(&tmpList);
+
 				fprintf(stdout,     "Test %d: ", testno++);
 				if (k                        == 0)
 				{
@@ -212,7 +212,7 @@ int main()
 					if (j                        != POSTORDER + 1)
 						fprintf(stdout, "should be: %s\n\n", output[j]); 
 					else
-						fprintf(stdout, "should be: NULL\n\n"); 
+						fprintf(stdout, "should be: (NULL)\n\n"); 
 
 					fflush (stdout);
 

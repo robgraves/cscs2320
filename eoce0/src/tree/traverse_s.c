@@ -31,7 +31,7 @@
 //                DLT_SUCCESS:     traverse successful
 //                DLT_EMPTY:       tree is in EMPTY state
 //                DLT_NULL:        tree is in NULL state
-//                DLT_FAIL:        an error has taken place (tree
+//                DLT_ERROR:        an error has taken place (tree
 //                                 is NULL, list exists, bad mode).
 //
 //              you are to have only ONE return statement for this
@@ -40,7 +40,43 @@
 code_t traverse_s(Tree *myTree, List **result, uc mode)
 {
     //variable declarations and initializations
-    code_t result = 0;
+    code_t coderesult = 0;
+    Node *tmp = NULL;
+    List *myList = NULL;
 
-	return(result);
+    //creating a list to put nodes from tree
+    //if (myList != NULL)
+    //{
+    //    coderesult = DLT_ERROR;
+    //}
+    //else
+    //{
+        coderesult = mklist(&myList);
+    //}
+
+    if (myTree == NULL)
+    {
+        coderesult = DLT_ERROR;
+    }
+    else
+    {
+        if (myTree == NULL)
+        {
+            coderesult = DLT_NULL | DLT_ERROR;
+        }
+        else
+        {
+            if (myTree->root == NULL)
+            {
+                coderesult = DLT_EMPTY;
+            }
+        }
+    }
+
+    if (mode == 0)
+    {
+
+    }
+
+	return(coderesult);
 }
