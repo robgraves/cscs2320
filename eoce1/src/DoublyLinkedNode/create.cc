@@ -2,10 +2,14 @@
 
 DoublyLinkedNode :: DoublyLinkedNode()
 {
-	// Your implementation here
+    this -> setAfter(NULL);
+    this -> prior = NULL;
+    this -> setValue(0);
 }
 
 DoublyLinkedNode :: DoublyLinkedNode(int value)
 {
-	// Your implementation here
+    this -> setValue(value);
+    this -> setAfter(NULL);
+    this -> prior = NULL;
 }

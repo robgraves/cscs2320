@@ -2,7 +2,12 @@
 
 Node * DoublyLinkedNode :: copy()
 {
-	// Youl implementation here
+    Node *newNode = NULL;
 
-	return (NULL);
+    newNode = new DoublyLinkedNode(this -> getValue());
+
+    newNode -> setAfter(this -> getAfter());
+    newNode -> setPrior(this -> getPrior());
+
+	return (newNode);
 }

@@ -2,11 +2,10 @@
 
 void DoublyLinkedNode :: setPrior(Node *priorNode)
 {
-	// Your implementation here
+    this -> prior = nextNode;
 }
 
 Node * DoublyLinkedNode :: getPrior()
 {
-	// Your implementation here
-	return(NULL);
+	return(this -> prior);
 }

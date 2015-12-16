@@ -2,5 +2,7 @@
 
 DoublyLinkedNode :: ~DoublyLinkedNode()
 {
-	// Your implementation here
+    this -> setValue(0);
+    this -> setAfter(NULL);
+    this -> prior = NULL;
 }
